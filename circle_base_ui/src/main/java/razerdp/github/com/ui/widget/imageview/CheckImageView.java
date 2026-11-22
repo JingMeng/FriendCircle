@@ -1,10 +1,10 @@
-package razerdp.github.com.ui.widget.imageview;
+﻿package razerdp.github.com.ui.widget.imageview;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,9 +14,9 @@ import com.socks.library.KLog;
 import razerdp.github.com.ui.util.UIHelper;
 
 /**
- * Created by 大灯泡 on 2017/3/24.
+ * Created by 澶х伅娉?on 2017/3/24.
  * <p>
- * 包含选择的Imageview
+ * 鍖呭惈閫夋嫨鐨処mageview
  */
 
 public class CheckImageView extends android.support.v7.widget.AppCompatImageView {
@@ -27,7 +27,7 @@ public class CheckImageView extends android.support.v7.widget.AppCompatImageView
     private CheckDrawable checkDrawable;
     private static final int CHECK_DRAWABLE_SIZE = UIHelper.dipToPx(20);
     private static final int CHECK_DRAWABLE_MARGIN = UIHelper.dipToPx(5);
-    //对于每一个imageview来说，小勾勾的位置都是固定的，所以直接给静态，不用new太多对象
+    //瀵逛簬姣忎竴涓猧mageview鏉ヨ锛屽皬鍕惧嬀鐨勪綅缃兘鏄浐瀹氱殑锛屾墍浠ョ洿鎺ョ粰闈欐€侊紝涓嶇敤new澶瀵硅薄
     private static Rect checkBounds = new Rect();
     private static Rect touchRectDelegate = new Rect();
     private boolean canSelect = true;
@@ -126,7 +126,7 @@ public class CheckImageView extends android.support.v7.widget.AppCompatImageView
             int bottom = top + CHECK_DRAWABLE_SIZE;
             checkBounds.set(left, top, rigth, bottom);
             touchRectDelegate.set(checkBounds);
-            //扩展点击范围
+            //鎵╁睍鐐瑰嚮鑼冨洿
             touchRectDelegate.inset(-5,-5);
         }
     }
@@ -147,3 +147,4 @@ public class CheckImageView extends android.support.v7.widget.AppCompatImageView
     }
 
 }
+

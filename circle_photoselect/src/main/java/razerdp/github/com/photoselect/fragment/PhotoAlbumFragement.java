@@ -1,7 +1,7 @@
-package razerdp.github.com.photoselect.fragment;
+﻿package razerdp.github.com.photoselect.fragment;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -24,9 +24,9 @@ import com.razerdp.github.com.common.entity.photo.AlbumInfo;
 import razerdp.github.com.photoselect.R;
 
 /**
- * Created by 大灯泡 on 2017/3/29.
+ * Created by 澶х伅娉?on 2017/3/29.
  * <p>
- * 相册浏览fragment
+ * 鐩稿唽娴忚fragment
  */
 
 public class PhotoAlbumFragement extends BaseFragment {
@@ -88,3 +88,4 @@ public class PhotoAlbumFragement extends BaseFragment {
 
 
 }
+

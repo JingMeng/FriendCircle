@@ -1,8 +1,8 @@
-package razerdp.friendcircle.ui.widget.praisewidget;
+﻿package razerdp.friendcircle.ui.widget.praisewidget;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextPaint;
 import android.view.View;
 
@@ -12,8 +12,8 @@ import razerdp.github.com.ui.util.UIHelper;
 import razerdp.github.com.ui.widget.span.ClickableSpanEx;
 
 /**
- * Created by 大灯泡 on 2016/2/21.
- * 点击事件
+ * Created by 澶х伅娉?on 2016/2/21.
+ * 鐐瑰嚮浜嬩欢
  */
 public class PraiseClick extends ClickableSpanEx {
     private static final int DEFAULT_COLOR = 0xff517fae;
@@ -40,7 +40,7 @@ public class PraiseClick extends ClickableSpanEx {
     @Override
     public void onClick(View widget) {
         if (mPraiseInfo!=null)
-            UIHelper.ToastMessage("当前用户名是： " + mPraiseInfo.getNick() + "   它的ID是： " + mPraiseInfo.getUserid());
+            UIHelper.ToastMessage("褰撳墠鐢ㄦ埛鍚嶆槸锛?" + mPraiseInfo.getNick() + "   瀹冪殑ID鏄細 " + mPraiseInfo.getUserid());
     }
 
     @Override
@@ -83,3 +83,4 @@ public class PraiseClick extends ClickableSpanEx {
         }
     }
 }
+

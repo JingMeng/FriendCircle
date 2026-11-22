@@ -1,7 +1,7 @@
-package razerdp.friendcircle.app.mvp.presenter.impl;
+﻿package razerdp.friendcircle.app.mvp.presenter.impl;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.razerdp.github.com.common.entity.CommentInfo;
@@ -13,9 +13,9 @@ import razerdp.friendcircle.app.mvp.callback.OnCommentChangeCallback;
 import razerdp.friendcircle.app.mvp.presenter.ICommentPresenter;
 
 /**
- * Created by 大灯泡 on 2016/12/7.
+ * Created by 澶х伅娉?on 2016/12/7.
  * <p>
- * 评论Model
+ * 璇勮Model
  */
 
 public class CommentImpl implements ICommentPresenter {
@@ -57,3 +57,4 @@ public class CommentImpl implements ICommentPresenter {
 
     }
 }
+

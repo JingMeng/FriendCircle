@@ -1,4 +1,4 @@
-package razerdp.github.com.ui.widget.common;
+﻿package razerdp.github.com.ui.widget.common;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -16,7 +16,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -24,9 +24,8 @@ import razerdp.github.com.baseuilib.R;
 
 
 /**
- * 通用圆形头像
- * github：
- * https://github.com/hdodenhof/CircleImageView
+ * 閫氱敤鍦嗗舰澶村儚
+ * github锛? * https://github.com/hdodenhof/CircleImageView
  *
  * <de.hdodenhof.circleimageview.CircleImageView
  * xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -1,8 +1,8 @@
-package razerdp.friendcircle.ui.viewholder;
+﻿package razerdp.friendcircle.ui.viewholder;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,9 +25,9 @@ import razerdp.github.com.widget.PhotoContents;
 import razerdp.github.com.widget.adapter.PhotoContentsBaseAdapter;
 
 /**
- * Created by 大灯泡 on 2016/11/3.
+ * Created by 澶х伅娉?on 2016/11/3.
  * <p>
- * 九宮格圖片的vh
+ * 涔濆鏍煎湒鐗囩殑vh
  *
  * @see MomentsType
  */
@@ -101,7 +101,7 @@ public class MultiImageMomentsVH extends CircleBaseViewHolder implements PhotoCo
             } else {
                 imageUrl = BmobUrlUtil.getThumbImageUrl(imageUrl, 25);
             }
-            KLog.i("处理的url  >>>  " + imageUrl);
+            KLog.i("澶勭悊鐨剈rl  >>>  " + imageUrl);
             ImageLoadMnanger.INSTANCE.loadImage(convertView, imageUrl);
         }
 
@@ -118,3 +118,4 @@ public class MultiImageMomentsVH extends CircleBaseViewHolder implements PhotoCo
 
     }
 }
+

@@ -1,16 +1,15 @@
-package razerdp.github.com.ui.base.adapter;
+﻿package razerdp.github.com.ui.base.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by 大灯泡 on 2016/11/1.
+ * Created by 澶х伅娉?on 2016/11/1.
  *
- * 对viewholder的封装
- */
+ * 瀵箆iewholder鐨勫皝瑁? */
 
 public abstract class BaseRecyclerViewHolder<T> extends RecyclerView.ViewHolder {
 
@@ -55,3 +54,4 @@ public abstract class BaseRecyclerViewHolder<T> extends RecyclerView.ViewHolder 
         isRecycled = recycled;
     }
 }
+

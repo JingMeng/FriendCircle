@@ -1,7 +1,7 @@
-package razerdp.github.com.adapter;
+﻿package razerdp.github.com.adapter;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,9 +15,9 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 import uk.co.senab.photoview.PhotoViewEx;
 
 /**
- * Created by 大灯泡 on 2017/4/1.
+ * Created by 澶х伅娉?on 2017/4/1.
  * <p>
- * 图片预览的adapter
+ * 鍥剧墖棰勮鐨刟dapter
  */
 
 public class PhotoBrowserAdapter extends PagerAdapter implements ClearMemoryObject {
@@ -94,3 +94,4 @@ public class PhotoBrowserAdapter extends PagerAdapter implements ClearMemoryObje
     }
 
 }
+

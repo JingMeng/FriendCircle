@@ -1,9 +1,9 @@
-package razerdp.github.com.ui.widget.commentwidget;
+﻿package razerdp.github.com.ui.widget.commentwidget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
@@ -14,13 +14,12 @@ import razerdp.github.com.ui.widget.span.ClickableSpanEx;
 import razerdp.github.com.ui.widget.span.SpannableStringBuilderCompat;
 
 /**
- * Created by 大灯泡 on 2016/2/23.
- * 评论控件
+ * Created by 澶х伅娉?on 2016/2/23.
+ * 璇勮鎺т欢
  */
 public class CommentWidget extends TextView {
     private static final String TAG = "CommentWidget";
-    //用户名颜色
-    private int textColor = 0xff517fae;
+    //鐢ㄦ埛鍚嶉鑹?    private int textColor = 0xff517fae;
     private static final int textSize = 14;
     SpannableStringBuilderCompat mSpannableStringBuilderCompat;
     private OnCommentUserClickListener mOnCommentUserClickListener;
@@ -56,7 +55,7 @@ public class CommentWidget extends TextView {
             createCommentStringBuilder(info);
         } catch (NullPointerException e) {
             e.printStackTrace();
-            Log.e(TAG, "虽然在下觉得不可能会有这个情况，但还是捕捉下吧，万一被打脸呢。。。");
+            Log.e(TAG, "铏界劧鍦ㄤ笅瑙夊緱涓嶅彲鑳戒細鏈夎繖涓儏鍐碉紝浣嗚繕鏄崟鎹変笅鍚э紝涓囦竴琚墦鑴稿憿銆傘€傘€?);
         }
     }
 
@@ -71,7 +70,7 @@ public class CommentWidget extends TextView {
         boolean isApply = !TextUtils.isEmpty(info.getReplyerName());
 
         if (!isApply) {
-            //用户A，B不空，证明是回复评论
+            //鐢ㄦ埛A锛孊涓嶇┖锛岃瘉鏄庢槸鍥炲璇勮
             CommentClick userA = new CommentClick.Builder(getContext(), info)
                     .setColor(0xff517fae)
                     .setClickEventColor(0xffc6c6c6)
@@ -81,14 +80,13 @@ public class CommentWidget extends TextView {
             mSpannableStringBuilderCompat.append(info.getCommentCreatorName(), userA, 0);
             mSpannableStringBuilderCompat.append(content);
         } else {
-            //如果是一条回复评论
-            CommentClick userA = new CommentClick.Builder(getContext(), info).setColor(0xff517fae)
+            //濡傛灉鏄竴鏉″洖澶嶈瘎璁?            CommentClick userA = new CommentClick.Builder(getContext(), info).setColor(0xff517fae)
                     .setClickEventColor(0xffc6c6c6)
                     .setTextSize(textSize)
                     .setClickListener(mOnCommentUserClickListener)
                     .build();
             mSpannableStringBuilderCompat.append(info.getCommentCreatorName(), userA, 0);
-            mSpannableStringBuilderCompat.append(" 回复 ");
+            mSpannableStringBuilderCompat.append(" 鍥炲 ");
 
             CommentClick userB = new CommentClick.Builder(getContext(), info).setColor(0xff517fae)
                     .setClickEventColor(0xffc6c6c6)
@@ -122,3 +120,4 @@ public class CommentWidget extends TextView {
     }
 
 }
+

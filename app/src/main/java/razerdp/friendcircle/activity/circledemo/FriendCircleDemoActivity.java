@@ -1,11 +1,11 @@
-package razerdp.friendcircle.activity.circledemo;
+﻿package razerdp.friendcircle.activity.circledemo;
 
 import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -69,9 +69,9 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
- * Created by 大灯泡 on 2016/10/26.
+ * Created by 澶х伅娉?on 2016/10/26.
  * <p>
- * 朋友圈主界面
+ * 鏈嬪弸鍦堜富鐣岄潰
  */
 
 public class FriendCircleDemoActivity extends BaseTitleBarActivity implements OnRefreshListener2, IMomentView, OnPreDispatchTouchListener {
@@ -84,8 +84,7 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
     private RelativeLayout mTipsLayout;
     private TextView mServiceTipsView;
     private ImageView mCloseImageView;
-    //服务器消息检查，非项目所需↑
-
+    //鏈嶅姟鍣ㄦ秷鎭鏌ワ紝闈為」鐩墍闇€鈫?
     private CircleRecyclerView circleRecyclerView;
     private CommentBox commentBox;
     private HostViewHolder hostViewHolder;
@@ -106,7 +105,7 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
         momentsRequest = new MomentsRequest();
         initView();
         initKeyboardHeightObserver();
-        UIHelper.ToastMessage("请尽量不要上传黄图，谢谢");
+        UIHelper.ToastMessage("璇峰敖閲忎笉瑕佷笂浼犻粍鍥撅紝璋㈣阿");
 
         UpdateInfoManager.INSTANCE.init(this, new BasePopupWindow.OnDismissListener() {
             @Override
@@ -132,10 +131,10 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
         if (mViewHelper == null) {
             mViewHelper = new CircleViewHelper(this);
         }
-        setTitle("朋友圈");
+        setTitle("鏈嬪弸鍦?);
         setTitleMode(TitleBar.MODE_BOTH);
         setTitleRightIcon(R.drawable.ic_camera);
-        setTitleLeftText("发现");
+        setTitleLeftText("鍙戠幇");
         setTitleLeftIcon(R.drawable.back_left);
         presenter = new MomentPresenter(this);
 
@@ -163,7 +162,7 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
     }
 
     private void initKeyboardHeightObserver() {
-        //观察键盘弹出与消退
+        //瑙傚療閿洏寮瑰嚭涓庢秷閫€
         KeyboardControlMnanager.observerKeyboardVisibleChange(this, new KeyboardControlMnanager.OnKeyboardStateChangeListener() {
             View anchorView;
 
@@ -171,11 +170,10 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
             public void onKeyboardChange(int keyboardHeight, boolean isVisible) {
                 int commentType = commentBox.getCommentType();
                 if (isVisible) {
-                    //定位评论框到view
+                    //瀹氫綅璇勮妗嗗埌view
                     anchorView = mViewHelper.alignCommentBoxToView(circleRecyclerView, commentBox, commentType);
                 } else {
-                    //定位到底部
-                    commentBox.dismissCommentBox(false);
+                    //瀹氫綅鍒板簳閮?                    commentBox.dismissCommentBox(false);
                     mViewHelper.alignCommentBoxToViewWhenDismiss(circleRecyclerView, commentBox, commentType, anchorView);
                 }
             }
@@ -222,10 +220,10 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
 
     @Override
     public void onTitleLeftClick() {
-        if (System.currentTimeMillis() - lastClickBackTime > 2000) { // 后退阻断
-            UIHelper.ToastMessage("这是朋友圈工程哦，不是整个微信哦~再点一次退出");
+        if (System.currentTimeMillis() - lastClickBackTime > 2000) { // 鍚庨€€闃绘柇
+            UIHelper.ToastMessage("杩欐槸鏈嬪弸鍦堝伐绋嬪摝锛屼笉鏄暣涓井淇″摝~鍐嶇偣涓€娆￠€€鍑?);
             lastClickBackTime = System.currentTimeMillis();
-        } else { // 关掉app
+        } else { // 鍏虫帀app
             super.onBackPressed();
         }
     }
@@ -291,7 +289,7 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
             switch (requestType) {
                 case REQUEST_REFRESH:
                     if (!ToolUtil.isListEmpty(response)) {
-                        KLog.i("firstMomentid", "第一条动态ID   >>>   " + response.get(0).getMomentid());
+                        KLog.i("firstMomentid", "绗竴鏉″姩鎬両D   >>>   " + response.get(0).getMomentid());
                         hostViewHolder.loadHostData(LocalHostManager.INSTANCE.getLocalHostUser());
                         adapter.updateData(response);
                     }
@@ -379,17 +377,16 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
 
     @Override
     public void onBackPressed() {
-        if (System.currentTimeMillis() - lastClickBackTime > 2000) { // 后退阻断
-            UIHelper.ToastMessage("再点一次退出");
+        if (System.currentTimeMillis() - lastClickBackTime > 2000) { // 鍚庨€€闃绘柇
+            UIHelper.ToastMessage("鍐嶇偣涓€娆￠€€鍑?);
             lastClickBackTime = System.currentTimeMillis();
-        } else { // 关掉app
+        } else { // 鍏虫帀app
             super.onBackPressed();
         }
     }
 
 
-    //服务器消息检查，非项目所需↓
-    private void delayCheckServiceInfo() {
+    //鏈嶅姟鍣ㄦ秷鎭鏌ワ紝闈為」鐩墍闇€鈫?    private void delayCheckServiceInfo() {
         Observable.timer(500, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Long>() {
@@ -455,8 +452,7 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
             }
         });
     }
-    //服务器消息检查，非项目所需↑
-
+    //鏈嶅姟鍣ㄦ秷鎭鏌ワ紝闈為」鐩墍闇€鈫?
     //=============================================================call back
     private CommentBox.OnCommentSendClickListener onCommentSendClickListener = new CommentBox.OnCommentSendClickListener() {
         @Override
@@ -497,7 +493,7 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
             if (hostInfo == null) return;
             ImageLoadMnanger.INSTANCE.loadImage(friend_wall_pic, hostInfo.getCover());
             ImageLoadMnanger.INSTANCE.loadImage(friend_avatar, hostInfo.getAvatar());
-            hostid.setText("您的测试ID为: " + hostInfo.getUserid() + '\n' + "您的测试用户名为: " + hostInfo.getNick());
+            hostid.setText("鎮ㄧ殑娴嬭瘯ID涓? " + hostInfo.getUserid() + '\n' + "鎮ㄧ殑娴嬭瘯鐢ㄦ埛鍚嶄负: " + hostInfo.getNick());
         }
 
         public View getView() {
@@ -506,3 +502,4 @@ public class FriendCircleDemoActivity extends BaseTitleBarActivity implements On
 
     }
 }
+

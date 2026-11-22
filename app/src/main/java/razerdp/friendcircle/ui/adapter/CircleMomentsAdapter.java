@@ -1,7 +1,7 @@
-package razerdp.friendcircle.ui.adapter;
+﻿package razerdp.friendcircle.ui.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.razerdp.github.com.common.entity.MomentsInfo;
 
@@ -13,9 +13,9 @@ import razerdp.github.com.ui.base.adapter.BaseMultiRecyclerViewAdapter;
 import razerdp.github.com.ui.base.adapter.BaseRecyclerViewHolder;
 
 /**
- * Created by 大灯泡 on 2016/11/1.
+ * Created by 澶х伅娉?on 2016/11/1.
  * <p>
- * 朋友圈adapter
+ * 鏈嬪弸鍦坅dapter
  */
 
 public class CircleMomentsAdapter extends BaseMultiRecyclerViewAdapter<CircleMomentsAdapter, MomentsInfo> {
@@ -34,3 +34,4 @@ public class CircleMomentsAdapter extends BaseMultiRecyclerViewAdapter<CircleMom
         }
     }
 }
+

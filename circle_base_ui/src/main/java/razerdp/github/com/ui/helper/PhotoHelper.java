@@ -1,12 +1,12 @@
-package razerdp.github.com.ui.helper;
+﻿package razerdp.github.com.ui.helper;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import java.io.File;
 import java.lang.annotation.Retention;
@@ -19,11 +19,11 @@ import razerdp.github.com.lib.helper.PermissionHelper;
 import razerdp.github.com.lib.utils.ImageSelectUtil;
 
 /**
- * Created by 大灯泡 on 2017/4/10.
+ * Created by 澶х伅娉?on 2017/4/10.
  * <p>
- * 图片拍照和选择
+ * 鍥剧墖鎷嶇収鍜岄€夋嫨
  * <p>
- * 务必注意fragment和activity，因为fragment调用getActivity不会调用到onActivityResult
+ * 鍔″繀娉ㄦ剰fragment鍜宎ctivity锛屽洜涓篺ragment璋冪敤getActivity涓嶄細璋冪敤鍒皁nActivityResult
  */
 
 public class PhotoHelper {
@@ -38,8 +38,8 @@ public class PhotoHelper {
     public static final int REQUEST_FROM_CAMERA = 0x10;
     public static final int REQUEST_FROM_ALBUM = 0x11;
     public static final int REQUEST_FROM_CROP = 0x12;
-    private static final int REQUEST_FROM_CAMERA_WITHO_OUT_CROP = 0x13;//不截图的request code
-    private static final int REQUEST_FROM_ALBUM_WITHO_OUT_CROP = 0x14;//不截图的request code
+    private static final int REQUEST_FROM_CAMERA_WITHO_OUT_CROP = 0x13;//涓嶆埅鍥剧殑request code
+    private static final int REQUEST_FROM_ALBUM_WITHO_OUT_CROP = 0x14;//涓嶆埅鍥剧殑request code
 
 
     private static String cropPath;
@@ -93,8 +93,7 @@ public class PhotoHelper {
     private static void fromAlbumInternal(Object obj, boolean needCrop) {
         if (obj == null) return;
         cropPath = getCropImagePath();
-        // 跳转到系统相册
-        Intent albumIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        // 璺宠浆鍒扮郴缁熺浉鍐?        Intent albumIntent = new Intent(Intent.ACTION_GET_CONTENT);
         albumIntent.setType("image/*");
         if (obj instanceof Fragment) {
             ((Fragment) obj).startActivityForResult(albumIntent, needCrop ? REQUEST_FROM_ALBUM : REQUEST_FROM_ALBUM_WITHO_OUT_CROP);
@@ -148,15 +147,13 @@ public class PhotoHelper {
     private static void toCropInternal(Object obj, Uri imageUri) {
         if (obj == null || imageUri == null) return;
         Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(imageUri, "image/*");// mUri是已经选择的图片Uri
+        intent.setDataAndType(imageUri, "image/*");// mUri鏄凡缁忛€夋嫨鐨勫浘鐗嘦ri
         intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 1);// 裁剪框比例
-        intent.putExtra("aspectY", 1);
-//        intent.putExtra("outputX", imageCover.getWidth());// 输出图片大小
+        intent.putExtra("aspectX", 1);// 瑁佸壀妗嗘瘮渚?        intent.putExtra("aspectY", 1);
+//        intent.putExtra("outputX", imageCover.getWidth());// 杈撳嚭鍥剧墖澶у皬
 //        intent.putExtra("outputY", imageCover.getHeight());
 
-        //此处使用uri.fromFile，而不要用fileProvider，因为非export，而后面自动授权，所以不会出现安全异常
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(cropPath)));
+        //姝ゅ浣跨敤uri.fromFile锛岃€屼笉瑕佺敤fileProvider锛屽洜涓洪潪export锛岃€屽悗闈㈣嚜鍔ㄦ巿鏉冿紝鎵€浠ヤ笉浼氬嚭鐜板畨鍏ㄥ紓甯?        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(cropPath)));
         intent.putExtra("return-data", false);
         if (CompatHelper.isOverM()) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -196,19 +193,19 @@ public class PhotoHelper {
                     if (data != null) {
                         final Uri photoUri = data.getData();
                         if (photoUri == null) {
-                            callError(callback, "加载图片失败");
+                            callError(callback, "鍔犺浇鍥剧墖澶辫触");
                             return;
                         }
                         try {
                             if (CompatHelper.isOverN()) {
                                 if (needCrop) {
-                                    //7.0用的是content uri
+                                    //7.0鐢ㄧ殑鏄痗ontent uri
                                     toCrop(act, photoUri);
                                 } else {
                                     callFinish(callback, ImageSelectUtil.getPath(act, photoUri));
                                 }
                             } else {
-                                //非7.0用的file uri
+                                //闈?.0鐢ㄧ殑file uri
                                 String path = ImageSelectUtil.getPath(act, photoUri);
                                 if (needCrop) {
                                     toCrop(act, CompatHelper.getUri(new File(path)));
@@ -218,22 +215,22 @@ public class PhotoHelper {
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            callError(callback, "图片不存在");
+                            callError(callback, "鍥剧墖涓嶅瓨鍦?);
                         }
                     } else {
-                        callError(callback, "图片不存在");
+                        callError(callback, "鍥剧墖涓嶅瓨鍦?);
                     }
                 }
                 break;
             case REQUEST_FROM_CROP:
                 if (resultCode == Activity.RESULT_OK) {
                     if (data == null) {
-                        callError(callback, "图片不存在");
+                        callError(callback, "鍥剧墖涓嶅瓨鍦?);
                         return;
                     }
                     callFinish(callback, cropPath);
                 } else {
-                    callError(callback, "取消");
+                    callError(callback, "鍙栨秷");
                 }
                 break;
 
@@ -266,19 +263,19 @@ public class PhotoHelper {
                     if (data != null) {
                         final Uri photoUri = data.getData();
                         if (photoUri == null) {
-                            callError(callback, "加载图片失败");
+                            callError(callback, "鍔犺浇鍥剧墖澶辫触");
                             return;
                         }
                         try {
                             if (CompatHelper.isOverN()) {
                                 if (needCrop) {
-                                    //7.0用的是content uri
+                                    //7.0鐢ㄧ殑鏄痗ontent uri
                                     toCrop(fragment, photoUri);
                                 } else {
                                     callFinish(callback, ImageSelectUtil.getPath(fragment.getContext(), photoUri));
                                 }
                             } else {
-                                //非7.0用的file uri
+                                //闈?.0鐢ㄧ殑file uri
                                 String path = ImageSelectUtil.getPath(fragment.getContext(), photoUri);
                                 if (needCrop) {
                                     toCrop(fragment, CompatHelper.getUri(new File(path)));
@@ -288,22 +285,22 @@ public class PhotoHelper {
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            callError(callback, "图片不存在");
+                            callError(callback, "鍥剧墖涓嶅瓨鍦?);
                         }
                     } else {
-                        callError(callback, "图片不存在");
+                        callError(callback, "鍥剧墖涓嶅瓨鍦?);
                     }
                 }
                 break;
             case REQUEST_FROM_CROP:
                 if (resultCode == Activity.RESULT_OK) {
                     if (data == null) {
-                        callError(callback, "图片不存在");
+                        callError(callback, "鍥剧墖涓嶅瓨鍦?);
                         return;
                     }
                     callFinish(callback, cropPath);
                 } else {
-                    callError(callback, "取消");
+                    callError(callback, "鍙栨秷");
                 }
                 break;
 
@@ -329,3 +326,4 @@ public class PhotoHelper {
     }
 
 }
+

@@ -1,11 +1,11 @@
-package razerdp.github.com.photoselect;
+﻿package razerdp.github.com.photoselect;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -40,12 +40,11 @@ import com.razerdp.github.com.common.router.RouterList;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * Created by 大灯泡 on 2017/3/30.
+ * Created by 澶х伅娉?on 2017/3/30.
  * <p>
- * 多功能图片浏览activity
+ * 澶氬姛鑳藉浘鐗囨祻瑙坅ctivity
  * <p>
- * target:以后实现编辑功能。。。。
- */
+ * target:浠ュ悗瀹炵幇缂栬緫鍔熻兘銆傘€傘€傘€? */
 
 @Route(path = "/photo/browser")
 public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnClickListener {
@@ -59,7 +58,7 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
     public PhotoBrowserInfo browserInfo;
 
     private PhotoBrowserAdapter adapter;
-    //记录本地图片选择情况
+    //璁板綍鏈湴鍥剧墖閫夋嫨鎯呭喌
     private List<ImageInfo> localSelectedPhotos;
     ViewHolder vh;
 
@@ -95,8 +94,7 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
         adapter.setOnViewTapListener(onViewTapListener);
         vh.viewPager.setAdapter(adapter);
         vh.viewPager.addOnPageChangeListener(onPageChangeListener);
-        //如果初始值为0的话，不会触发pagechangelistener里面的pageselected，所以对于预览模式需要手动设定
-        //详看源码(api:25.2.0)viewpager:line657
+        //濡傛灉鍒濆鍊间负0鐨勮瘽锛屼笉浼氳Е鍙憄agechangelistener閲岄潰鐨刾ageselected锛屾墍浠ュ浜庨瑙堟ā寮忛渶瑕佹墜鍔ㄨ瀹?        //璇︾湅婧愮爜(api:25.2.0)viewpager:line657
         //final boolean dispatchSelected = mCurItem != item;
         if (browserInfo.getCurPos()==0){
             vh.setSelected(checkIsSelect(0),false);
@@ -114,7 +112,7 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
         } else if (i == R.id.photo_select_finish) {
             finish();
         } else if (i == R.id.photo_edit) {
-            UIHelper.ToastMessage("编辑功能大概要好长好长的一段时间后才会研究的啦~");
+            UIHelper.ToastMessage("缂栬緫鍔熻兘澶ф瑕佸ソ闀垮ソ闀跨殑涓€娈垫椂闂村悗鎵嶄細鐮旂┒鐨勫暒~");
         }
 
     }
@@ -122,7 +120,7 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
     private boolean checkPhotoSelectCountValided(boolean toast) {
         boolean result = localSelectedPhotos.size() <= maxSelectCount;
         if (toast && !result) {
-            UIHelper.ToastMessage("最多只能选" + maxSelectCount + "张照片哦");
+            UIHelper.ToastMessage("鏈€澶氬彧鑳介€? + maxSelectCount + "寮犵収鐗囧摝");
         }
         return result;
     }
@@ -198,7 +196,7 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
             boolean isSelected = checkIsSelect(info);
             if (isMax) {
                 if (!isSelected) {
-                    UIHelper.ToastMessage("最多只能选" + maxSelectCount + "张照片哦");
+                    UIHelper.ToastMessage("鏈€澶氬彧鑳介€? + maxSelectCount + "寮犵収鐗囧摝");
                     return;
                 }
             }
@@ -282,13 +280,13 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
             mTopBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //这个clicklistener仅仅用来拦截事件，不让其传到viewpager触发隐藏动画
+                    //杩欎釜clicklistener浠呬粎鐢ㄦ潵鎷︽埅浜嬩欢锛屼笉璁╁叾浼犲埌viewpager瑙﹀彂闅愯棌鍔ㄧ敾
                 }
             });
             mBottomBar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //这个clicklistener仅仅用来拦截事件，不让其传到viewpager触发隐藏动画
+                    //杩欎釜clicklistener浠呬粎鐢ㄦ潵鎷︽埅浜嬩欢锛屼笉璁╁叾浼犲埌viewpager瑙﹀彂闅愯棌鍔ㄧ敾
                 }
             });
             buildAnima();
@@ -372,3 +370,4 @@ public class PhotoMultiBrowserActivity extends BaseActivity implements View.OnCl
         }
     }
 }
+

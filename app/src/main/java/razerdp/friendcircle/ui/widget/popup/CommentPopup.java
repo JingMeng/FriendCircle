@@ -1,7 +1,7 @@
-package razerdp.friendcircle.ui.widget.popup;
+﻿package razerdp.friendcircle.ui.widget.popup;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +25,8 @@ import razerdp.github.com.lib.utils.ToolUtil;
 import razerdp.github.com.ui.util.UIHelper;
 
 /**
- * Created by 大灯泡 on 2016/3/6.
- * 朋友圈点赞
- */
+ * Created by 澶х伅娉?on 2016/3/6.
+ * 鏈嬪弸鍦堢偣璧? */
 public class CommentPopup extends BasePopupWindow implements View.OnClickListener {
     private static final String TAG = "CommentPopup";
 
@@ -44,7 +43,7 @@ public class CommentPopup extends BasePopupWindow implements View.OnClickListene
 
     private OnCommentPopupClickListener mOnCommentPopupClickListener;
 
-    //是否已经点赞
+    //鏄惁宸茬粡鐐硅禐
     private boolean hasLiked;
 
     public CommentPopup(Activity context) {
@@ -177,7 +176,7 @@ public class CommentPopup extends BasePopupWindow implements View.OnClickListene
                 }
             }
         }
-        mLikeText.setText(hasLiked ? "取消" : "赞");
+        mLikeText.setText(hasLiked ? "鍙栨秷" : "璧?);
 
     }
 
@@ -200,3 +199,4 @@ public class CommentPopup extends BasePopupWindow implements View.OnClickListene
         }
     }
 }
+

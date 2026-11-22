@@ -1,8 +1,8 @@
-package razerdp.github.com.photoselect;
+﻿package razerdp.github.com.photoselect;
 
 import android.content.Context;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,3 +24,4 @@ public class ExampleInstrumentedTest {
         assertEquals("razerdp.github.com.photoselect.test", appContext.getPackageName());
     }
 }
+

@@ -1,14 +1,13 @@
-
+﻿
 package razerdp.github.com.ui.util;
 
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.view.View;
 
 /**
- * Created by 大灯泡 on 2017/02/28.
+ * Created by 澶х伅娉?on 2017/02/28.
  * <p>
- * view偏移帮助类
- */
+ * view鍋忕Щ甯姪绫? */
  public class ViewOffsetHelper {
 
     private final View mTarget;
@@ -21,8 +20,7 @@ import android.view.View;
     }
 
     /**
-     * 不可见的情况下就没必要做offset了
-     *
+     * 涓嶅彲瑙佺殑鎯呭喌涓嬪氨娌″繀瑕佸仛offset浜?     *
      * @return
      */
     private boolean checkHasTarget() {
@@ -30,8 +28,7 @@ import android.view.View;
     }
 
     /**
-     * offset绝对位置，其实就是记录上一次的值进行相减
-     *
+     * offset缁濆浣嶇疆锛屽叾瀹炲氨鏄褰曚笂涓€娆＄殑鍊艰繘琛岀浉鍑?     *
      * @param absoluteOffset
      * @return
      */
@@ -89,3 +86,4 @@ import android.view.View;
     }
 
 }
+

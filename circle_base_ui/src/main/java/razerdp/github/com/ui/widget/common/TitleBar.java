@@ -1,8 +1,8 @@
-package razerdp.github.com.ui.widget.common;
+﻿package razerdp.github.com.ui.widget.common;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -22,7 +22,7 @@ import razerdp.github.com.ui.util.ViewUtil;
 import razerdp.github.com.ui.widget.indicator.DotWidget;
 
 /**
- * Created by 大灯泡 on 2016/7/20.
+ * Created by 澶х伅娉?on 2016/7/20.
  * <p>
  * titlebar
  */
@@ -286,3 +286,4 @@ public class TitleBar extends FrameLayout implements View.OnClickListener, View.
         boolean onRightClick(View v, boolean isLongClick);
     }
 }
+

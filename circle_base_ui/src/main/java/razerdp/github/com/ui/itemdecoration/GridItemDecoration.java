@@ -1,11 +1,11 @@
-package razerdp.github.com.ui.itemdecoration;
+﻿package razerdp.github.com.ui.itemdecoration;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Created by 大灯泡 on 2017/3/24.
+ * Created by 澶х伅娉?on 2017/3/24.
  */
 
 public class GridItemDecoration extends RecyclerView.ItemDecoration {
@@ -25,3 +25,4 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
     }
 
 }
+

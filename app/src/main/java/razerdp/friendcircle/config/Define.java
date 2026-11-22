@@ -1,14 +1,14 @@
-package razerdp.friendcircle.config;
+﻿package razerdp.friendcircle.config;
 
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created by 大灯泡 on 2016/10/27.
+ * Created by 澶х伅娉?on 2016/10/27.
  * <p>
- * 常量定义
+ * 甯搁噺瀹氫箟
  */
 @Retention(RetentionPolicy.SOURCE)
 public @interface Define {
@@ -23,3 +23,4 @@ public @interface Define {
         int UNLIKE = 0x11;
     }
 }
+

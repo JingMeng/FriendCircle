@@ -1,7 +1,7 @@
-package razerdp.github.com.ui.dialog.progress;
+﻿package razerdp.github.com.ui.dialog.progress;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,7 +11,7 @@ import razerdp.github.com.baseuilib.R;
 import razerdp.github.com.ui.widget.common.CircleProgressView;
 
 /**
- * Created by 大灯泡 on 2017/4/5.
+ * Created by 澶х伅娉?on 2017/4/5.
  */
 
 public class ProgressDialogView extends LinearLayout {
@@ -47,3 +47,4 @@ public class ProgressDialogView extends LinearLayout {
         circleProgressView.setCurrentPresent(progress);
     }
 }
+

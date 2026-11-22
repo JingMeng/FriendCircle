@@ -1,21 +1,20 @@
-package razerdp.github.com.ui.util;
+﻿package razerdp.github.com.ui.util;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 /**
- * Created by 大灯泡 on 2017/6/1.
+ * Created by 澶х伅娉?on 2017/6/1.
  */
 
 public class RecyclerViewUtil {
     /**
-     * 判断recyclerview是否滑到底部
+     * 鍒ゆ柇recyclerview鏄惁婊戝埌搴曢儴
      * <p>
-     * 原理：判断滑过的距离加上屏幕上的显示的区域是否比整个控件高度高
-     *
+     * 鍘熺悊锛氬垽鏂粦杩囩殑璺濈鍔犱笂灞忓箷涓婄殑鏄剧ず鐨勫尯鍩熸槸鍚︽瘮鏁翠釜鎺т欢楂樺害楂?     *
      * @return
      */
     public static boolean isScrollToBottom(@NonNull RecyclerView recyclerView) {
@@ -42,3 +41,4 @@ public class RecyclerViewUtil {
         return false;
     }
 }
+

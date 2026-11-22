@@ -1,13 +1,13 @@
-package razerdp.github.com.ui.util;
+﻿package razerdp.github.com.ui.util;
 
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.TouchDelegate;
 import android.view.View;
 
 /**
- * Created by 大灯泡 on 2017/3/16.
+ * Created by 澶х伅娉?on 2017/3/16.
  */
 
 public class ViewUtil {
@@ -41,8 +41,7 @@ public class ViewUtil {
     }
 
     /**
-     * 扩大View的触摸和点击响应范围,最大不超过其父View范围（ABSListView无效）
-     * 延迟300毫秒执行，使该方法可以在onCreate里面使用
+     * 鎵╁ぇView鐨勮Е鎽稿拰鐐瑰嚮鍝嶅簲鑼冨洿,鏈€澶т笉瓒呰繃鍏剁埗View鑼冨洿锛圓BSListView鏃犳晥锛?     * 寤惰繜300姣鎵ц锛屼娇璇ユ柟娉曞彲浠ュ湪onCreate閲岄潰浣跨敤
      */
     public static void expandViewTouchDelegate(final View view, final int top, final int bottom, final int left, final int right) {
         if (view == null) {
@@ -75,7 +74,7 @@ public class ViewUtil {
     }
 
     /**
-     * 还原View的触摸和点击响应范围,最小不小于View自身范围
+     * 杩樺師View鐨勮Е鎽稿拰鐐瑰嚮鍝嶅簲鑼冨洿,鏈€灏忎笉灏忎簬View鑷韩鑼冨洿
      */
     public static void restoreViewTouchDelegate(final View view) {
         if (view == null) {
@@ -100,3 +99,4 @@ public class ViewUtil {
     }
 
 }
+

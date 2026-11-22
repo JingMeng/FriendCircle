@@ -1,4 +1,4 @@
-package razerdp.github.com.ui.widget.commentwidget;
+﻿package razerdp.github.com.ui.widget.commentwidget;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -8,9 +8,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -36,10 +36,10 @@ import static razerdp.github.com.ui.widget.commentwidget.CommentContentsLayout.E
 import static razerdp.github.com.ui.widget.commentwidget.CommentContentsLayout.ExpandState.EXPANDING;
 
 /**
- * Created by 大灯泡 on 2017/12/14.
+ * Created by 澶х伅娉?on 2017/12/14.
  * <p>
- * 评论展示layout，容纳commentwidget的layout
- * 为了防止过多层layout（过度绘制），所以展开部分采取直接绘制
+ * 璇勮灞曠ずlayout锛屽绾砪ommentwidget鐨刲ayout
+ * 涓轰簡闃叉杩囧灞俵ayout锛堣繃搴︾粯鍒讹級锛屾墍浠ュ睍寮€閮ㄥ垎閲囧彇鐩存帴缁樺埗
  */
 
 public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnHierarchyChangeListener {
@@ -68,8 +68,7 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
     private int mWrapCount = DEFAULT_WRAP_COUNT;
     private boolean animExpand = true;
 
-    //评论区的view对象池
-    private SimpleWeakObjectPool<CommentWidget> COMMENT_TEXT_POOL;
+    //璇勮鍖虹殑view瀵硅薄姹?    private SimpleWeakObjectPool<CommentWidget> COMMENT_TEXT_POOL;
 
     private int showMoreTextHeight = UIHelper.dipToPx(24f);
     private int commentLeftAndPaddintRight = UIHelper.dipToPx(8f);
@@ -109,11 +108,10 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
     }
 
     /**
-     * 添加评论
+     * 娣诲姞璇勮
      *
      * @param datas
-     * @return ture=显示评论，false=不显示评论
-     */
+     * @return ture=鏄剧ず璇勮锛宖alse=涓嶆樉绀鸿瘎璁?     */
     public boolean addComments(List<? extends IComment> datas) {
         if (isListEmpty(datas)) {
             return false;
@@ -121,7 +119,7 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
         if (getVisibility() != VISIBLE) setVisibility(VISIBLE);
         final int childCount = getChildCount();
         if (childCount < datas.size()) {
-            //当前的view少于list的长度，则补充相差的view
+            //褰撳墠鐨剉iew灏戜簬list鐨勯暱搴︼紝鍒欒ˉ鍏呯浉宸殑view
             int subCount = datas.size() - childCount;
             for (int i = 0; i < subCount; i++) {
                 CommentWidget commentWidget = COMMENT_TEXT_POOL.get();
@@ -141,10 +139,10 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
                 addViewInLayout(commentWidget, i, params, true);
             }
         } else if (childCount > datas.size()) {
-            //当前的view的数目比list的长度大，则减去对应的view
+            //褰撳墠鐨剉iew鐨勬暟鐩瘮list鐨勯暱搴﹀ぇ锛屽垯鍑忓幓瀵瑰簲鐨剉iew
             removeViewsInLayout(datas.size(), childCount - datas.size());
         }
-        //绑定数据
+        //缁戝畾鏁版嵁
         for (int n = 0; n < datas.size(); n++) {
             CommentWidget commentWidget = (CommentWidget) getChildAt(n);
             if (commentWidget != null) commentWidget.setCommentText(datas.get(n));
@@ -222,8 +220,8 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
         if (drawWrapButton()) {
             getDrawingRect(mDrawRect);
             if (mDrawRect.isEmpty()) return;
-            float textWidth = mTextPaint.measureText(isExpanded() ? "收起评论" : "展开评论");
-            canvas.drawText(isExpanded() ? "收起评论" : "展开评论", (mDrawRect.width() - textWidth) / 2, mDrawRect.bottom - getPaddingBottom() - UIHelper.dipToPx(8), mTextPaint);
+            float textWidth = mTextPaint.measureText(isExpanded() ? "鏀惰捣璇勮" : "灞曞紑璇勮");
+            canvas.drawText(isExpanded() ? "鏀惰捣璇勮" : "灞曞紑璇勮", (mDrawRect.width() - textWidth) / 2, mDrawRect.bottom - getPaddingBottom() - UIHelper.dipToPx(8), mTextPaint);
             mMoreButtonTouchRect.set(mDrawRect.left,
                     mDrawRect.bottom - getPaddingBottom() - UIHelper.dipToPx(16),
                     mDrawRect.right,
@@ -314,7 +312,7 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
     @Override
     public void onChildViewRemoved(View parent, View child) {
         if (child instanceof CommentWidget) {
-            KLog.i(TAG, "捕获到一个评论removed，缓存池+1，当前缓存量  >>>  " + COMMENT_TEXT_POOL.size());
+            KLog.i(TAG, "鎹曡幏鍒颁竴涓瘎璁簉emoved锛岀紦瀛樻睜+1锛屽綋鍓嶇紦瀛橀噺  >>>  " + COMMENT_TEXT_POOL.size());
             COMMENT_TEXT_POOL.put((CommentWidget) child);
         }
     }
@@ -436,11 +434,9 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
     public void setExpandValue(float expandValue) {
         float differentExpand = expandValue - curExpandValue;
         if (differentExpand > 0) {
-            //传入值比当前值大，则意味着还在扩展中
-            mState = EXPANDING;
+            //浼犲叆鍊兼瘮褰撳墠鍊煎ぇ锛屽垯鎰忓懗鐫€杩樺湪鎵╁睍涓?            mState = EXPANDING;
         } else if (differentExpand < 0) {
-            //与上面相反
-            mState = ExpandState.COLLAPSING;
+            //涓庝笂闈㈢浉鍙?            mState = ExpandState.COLLAPSING;
         } else if (differentExpand == 0) {
             mState = ExpandState.COLLAPSED;
         } else if (differentExpand == 1) {
@@ -485,3 +481,4 @@ public class CommentContentsLayout extends LinearLayout implements ViewGroup.OnH
 
 
 }
+

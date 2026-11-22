@@ -1,7 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
+    namespace 'uk.co.senab.photoview'
     compileSdkVersion rootProject.ext.android.compileSdkVersion
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
 
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -22,6 +27,6 @@ android {
 }
 
 dependencies {
-    api "com.android.support:support-core-utils:27.0.2"
+    api 'androidx.core:core:1.9.0'
 }
 

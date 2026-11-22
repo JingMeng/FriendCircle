@@ -1,10 +1,10 @@
-package razerdp.github.com.photoselect;
+﻿package razerdp.github.com.photoselect;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -30,10 +30,9 @@ import razerdp.github.com.photoselect.fragment.PhotoAlbumFragement;
 import razerdp.github.com.photoselect.fragment.PhotoGridFragement;
 
 /**
- * Created by 大灯泡 on 2017/3/22.
+ * Created by 澶х伅娉?on 2017/3/22.
  * <p>
- * 图片选择器
- */
+ * 鍥剧墖閫夋嫨鍣? */
 
 @Route(path = RouterList.PhotoSelectActivity.path)
 public class PhotoSelectActivity extends BaseTitleBarActivity {
@@ -81,8 +80,8 @@ public class PhotoSelectActivity extends BaseTitleBarActivity {
     private void initTitle() {
         setTitle(LocalPhotoManager.INSTANCE.getAllPhotoTitle());
         setTitleMode(TitleBar.MODE_BOTH);
-        setTitleLeftText("相册");
-        setTitleRightText("取消");
+        setTitleLeftText("鐩稿唽");
+        setTitleRightText("鍙栨秷");
         setTitleRightIcon(0);
     }
 
@@ -138,7 +137,7 @@ public class PhotoSelectActivity extends BaseTitleBarActivity {
     @Override
     public void onTitleLeftClick() {
         setTitleMode(TitleBar.MODE_RIGHT);
-        setTitle("相册");
+        setTitle("鐩稿唽");
         changeFragment(gridFragement, albumFragement, true);
     }
 
@@ -173,3 +172,4 @@ public class PhotoSelectActivity extends BaseTitleBarActivity {
         EventBus.getDefault().unregister(this);
     }
 }
+

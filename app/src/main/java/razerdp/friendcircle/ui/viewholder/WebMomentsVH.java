@@ -1,6 +1,6 @@
-package razerdp.friendcircle.ui.viewholder;
+﻿package razerdp.friendcircle.ui.viewholder;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.razerdp.github.com.common.entity.MomentsInfo;
@@ -10,9 +10,9 @@ import razerdp.github.com.ui.base.adapter.LayoutId;
 
 
 /**
- * Created by 大灯泡 on 2016/11/3.
+ * Created by 澶х伅娉?on 2016/11/3.
  * <p>
- * 網頁vh
+ * 缍查爜vh
  *
  * @see MomentsType
  */
@@ -36,3 +36,4 @@ public class WebMomentsVH extends CircleBaseViewHolder {
 
     }
 }
+

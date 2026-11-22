@@ -1,10 +1,10 @@
-package razerdp.github.com.ui.dialog.progress;
+﻿package razerdp.github.com.ui.dialog.progress;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.support.annotation.StyleRes;
 import android.view.Gravity;
 import android.view.Window;
@@ -14,7 +14,7 @@ import razerdp.github.com.ui.util.UIHelper;
 import razerdp.github.com.baseuilib.R;
 
 /**
- * Created by 大灯泡 on 2017/4/5.
+ * Created by 澶х伅娉?on 2017/4/5.
  */
 
 public class ProgressDialogHelper extends Dialog {
@@ -67,3 +67,4 @@ public class ProgressDialogHelper extends Dialog {
         probgressDialogView.setProgress(progress);
     }
 }
+

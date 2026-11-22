@@ -1,10 +1,10 @@
-package razerdp.friendcircle.app.mvp.presenter.impl;
+﻿package razerdp.friendcircle.app.mvp.presenter.impl;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -31,9 +31,9 @@ import razerdp.github.com.ui.util.UIHelper;
 import razerdp.github.com.ui.widget.commentwidget.CommentWidget;
 
 /**
- * Created by 大灯泡 on 2016/12/7.
+ * Created by 澶х伅娉?on 2016/12/7.
  * <p>
- * 朋友圈presenter
+ * 鏈嬪弸鍦坧resenter
  */
 
 public class MomentPresenter implements IMomentPresenter {
@@ -62,7 +62,7 @@ public class MomentPresenter implements IMomentPresenter {
         return this;
     }
 
-    //=============================================================动作控制
+    //=============================================================鍔ㄤ綔鎺у埗
     @Override
     public void addLike(final int viewHolderPos, final String momentid, final List<LikesInfo> currentLikeList) {
         likeModel.addLike(momentid, new OnLikeChangeCallback() {
@@ -130,7 +130,7 @@ public class MomentPresenter implements IMomentPresenter {
                     commentList.addAll(currentCommentList);
                 }
                 commentList.add(response);
-                KLog.i("comment", "评论成功 >>>  " + response.toString());
+                KLog.i("comment", "璇勮鎴愬姛 >>>  " + response.toString());
                 if (momentView != null) {
                     momentView.onCommentChange(viewHolderPos, commentList);
                 }
@@ -168,7 +168,7 @@ public class MomentPresenter implements IMomentPresenter {
                         break;
                     }
                 }
-                KLog.i("comment", "删除评论成功 >>>  " + commentid);
+                KLog.i("comment", "鍒犻櫎璇勮鎴愬姛 >>>  " + commentid);
                 if (momentView != null) {
                     momentView.onCommentChange(viewHolderPos, resultLikeList);
                 }
@@ -180,12 +180,12 @@ public class MomentPresenter implements IMomentPresenter {
 
     @Override
     public void deleteMoments(Context context, @NonNull final MomentsInfo momentsInfo) {
-        assert momentsInfo != null : "momentsInfo为空";
+        assert momentsInfo != null : "momentsInfo涓虹┖";
         new AlertDialog.Builder(context)
-                .setTitle("删除动态")
-                .setMessage("确定删除吗？")
-                .setNegativeButton("取消", null)
-                .setPositiveButton("删除", new DialogInterface.OnClickListener() {
+                .setTitle("鍒犻櫎鍔ㄦ€?)
+                .setMessage("纭畾鍒犻櫎鍚楋紵")
+                .setNegativeButton("鍙栨秷", null)
+                .setPositiveButton("鍒犻櫎", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -196,7 +196,7 @@ public class MomentPresenter implements IMomentPresenter {
                                     deleteFiles(momentsInfo);
                                     momentView.onDeleteMomentsInfo(momentsInfo);
                                 } else {
-                                    UIHelper.ToastMessage("删除失败");
+                                    UIHelper.ToastMessage("鍒犻櫎澶辫触");
                                 }
                             }
                         });
@@ -215,9 +215,9 @@ public class MomentPresenter implements IMomentPresenter {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
-                        KLog.d("delPic", "文件删除成功 : " + pic);
+                        KLog.d("delPic", "鏂囦欢鍒犻櫎鎴愬姛 : " + pic);
                     } else {
-                        KLog.d("delPic", "文件删除失败：" + e.getErrorCode() + "," + e.getMessage());
+                        KLog.d("delPic", "鏂囦欢鍒犻櫎澶辫触锛? + e.getErrorCode() + "," + e.getMessage());
                     }
                 }
             });
@@ -249,3 +249,4 @@ public class MomentPresenter implements IMomentPresenter {
 
     //------------------------------------------interface impl-----------------------------------------------
 }
+

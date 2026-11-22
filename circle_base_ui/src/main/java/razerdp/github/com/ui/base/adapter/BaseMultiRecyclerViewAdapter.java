@@ -1,8 +1,8 @@
-package razerdp.github.com.ui.base.adapter;
+﻿package razerdp.github.com.ui.base.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import razerdp.github.com.lib.thirdpart.joor.Reflect;
 import razerdp.github.com.lib.thirdpart.joor.ReflectException;
 
 /**
- * Created by 大灯泡 on 2018/4/10.
+ * Created by 澶х伅娉?on 2018/4/10.
  */
 public class BaseMultiRecyclerViewAdapter<A extends BaseMultiRecyclerViewAdapter, T extends MultiType> extends BaseRecyclerViewAdapter<T> {
 
@@ -70,7 +70,7 @@ public class BaseMultiRecyclerViewAdapter<A extends BaseMultiRecyclerViewAdapter
     }
 
     /**
-     * vh的信息类
+     * vh鐨勪俊鎭被
      */
     private static final class ViewHolderInfo implements Serializable {
         final Class<? extends BaseMultiRecyclerViewHolder> holderClass;
@@ -104,10 +104,9 @@ public class BaseMultiRecyclerViewAdapter<A extends BaseMultiRecyclerViewAdapter
     private static int getLayoutAnnotationId(Class<? extends BaseMultiRecyclerViewHolder> vhClass) {
         if (vhClass == null) return 0;
 
-        //获取类上的注解值
-        LayoutId layoutIdAnnotation = vhClass.getAnnotation(LayoutId.class);
+        //鑾峰彇绫讳笂鐨勬敞瑙ｅ€?        LayoutId layoutIdAnnotation = vhClass.getAnnotation(LayoutId.class);
         if (layoutIdAnnotation == null) {
-            throw new NullPointerException("必须在类上注解@LayoutId以标识itemview的布局文件id");
+            throw new NullPointerException("蹇呴』鍦ㄧ被涓婃敞瑙LayoutId浠ユ爣璇唅temview鐨勫竷灞€鏂囦欢id");
         }
 
         try {
@@ -119,3 +118,4 @@ public class BaseMultiRecyclerViewAdapter<A extends BaseMultiRecyclerViewAdapter
         return 0;
     }
 }
+

@@ -1,8 +1,8 @@
-package razerdp.github.com.ui.util.span;
+﻿package razerdp.github.com.ui.util.span;
 
 import android.graphics.Typeface;
 import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -23,9 +23,9 @@ import razerdp.github.com.lib.utils.StringUtil;
 import razerdp.github.com.ui.util.UIHelper;
 
 /**
- * Created by 大灯泡 on 2017/12/21.
+ * Created by 澶х伅娉?on 2017/12/21.
  * <p>
- * 多span样式util
+ * 澶歴pan鏍峰紡util
  */
 public class MultiSpanUtil {
     private MultiSpanUtil() {
@@ -103,7 +103,7 @@ public class MultiSpanUtil {
                 } else {
                     int index = source.indexOf(itemOption.getKeyWord());
                     if (index >= 0) {
-                        // 遍历关键字，当关键字没有的时候,跳出循环
+                        // 閬嶅巻鍏抽敭瀛楋紝褰撳叧閿瓧娌℃湁鐨勬椂鍊?璺冲嚭寰幆
                         while (index < sourceStrLen && index >= 0) {
                             applySpan(result, itemOption.getKeyWord(), itemOption, index);
                             index = source.indexOf(itemOption.getKeyWord(), index + itemOption.getKeyWord().length());
@@ -305,3 +305,4 @@ public class MultiSpanUtil {
     }
 
 }
+

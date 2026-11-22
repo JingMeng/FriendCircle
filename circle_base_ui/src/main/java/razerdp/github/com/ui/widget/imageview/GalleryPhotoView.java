@@ -1,4 +1,4 @@
-package razerdp.github.com.ui.widget.imageview;
+﻿package razerdp.github.com.ui.widget.imageview;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -10,7 +10,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -24,13 +24,12 @@ import uk.co.senab.photoview.PhotoView;
 
 
 /**
- * Created by 大灯泡 on 2016/12/20.
+ * Created by 澶х伅娉?on 2016/12/20.
  * <p>
- * 用于图片浏览页面的photoview，主要负责展开动画和回退动画的计算
+ * 鐢ㄤ簬鍥剧墖娴忚椤甸潰鐨刾hotoview锛屼富瑕佽礋璐ｅ睍寮€鍔ㄧ敾鍜屽洖閫€鍔ㄧ敾鐨勮绠? * <p>
  * <p>
- * <p>
- * 本代码部分参考bm-x photoview(用scroller实现动画)：https://github.com/bm-x/PhotoView
- * 本代码大部分参考photoview的实现方式：https://github.com/chrisbanes/PhotoView
+ * 鏈唬鐮侀儴鍒嗗弬鑰僢m-x photoview(鐢╯croller瀹炵幇鍔ㄧ敾)锛歨ttps://github.com/bm-x/PhotoView
+ * 鏈唬鐮佸ぇ閮ㄥ垎鍙傝€僷hotoview鐨勫疄鐜版柟寮忥細https://github.com/chrisbanes/PhotoView
  */
 
 public class GalleryPhotoView extends PhotoView {
@@ -171,11 +170,11 @@ public class GalleryPhotoView extends PhotoView {
             return;
         }
 
-        //bitmap位移
+        //bitmap浣嶇Щ
         bitmapTransform.animaTranslate(from.centerX(), target.centerX(), from.centerY(), target.centerY());
 
         float scale = calculateScaleByCenterCrop(from, drawableBounds, target);
-        //等比缩放
+        //绛夋瘮缂╂斁
         bitmapTransform.animaScale(getScale(), scale, from.centerX(), from.centerY());
 
         if (alphaView != null) {
@@ -209,9 +208,9 @@ public class GalleryPhotoView extends PhotoView {
 
 
         /**
-         * 假设原始图片高h，宽w ，Imageview的高y，宽x
-         * 判断高宽比例，如果目标高宽比例大于原图，则原图高度不变，宽度为(w1 = (h * x) / y)拉伸
-         * 画布宽高(w1,h),在原图的((w - w1) / 2, 0)位置进行切割
+         * 鍋囪鍘熷鍥剧墖楂榟锛屽w 锛孖mageview鐨勯珮y锛屽x
+         * 鍒ゆ柇楂樺姣斾緥锛屽鏋滅洰鏍囬珮瀹芥瘮渚嬪ぇ浜庡師鍥撅紝鍒欏師鍥鹃珮搴︿笉鍙橈紝瀹藉害涓?w1 = (h * x) / y)鎷変几
+         * 鐢诲竷瀹介珮(w1,h),鍦ㄥ師鍥剧殑((w - w1) / 2, 0)浣嶇疆杩涜鍒囧壊
          */
         int t = (viewHeight / viewWidth) - (imageHeight / imageWidth);
 
@@ -228,8 +227,7 @@ public class GalleryPhotoView extends PhotoView {
     }
 
     /**
-     * 获取view的大小
-     *
+     * 鑾峰彇view鐨勫ぇ灏?     *
      * @return
      */
     public Rect getViewBounds() {
@@ -385,13 +383,12 @@ public class GalleryPhotoView extends PhotoView {
             KLog.i("clip", "clipTo  >>>  " + clipTo.toShortString());
 
             if (!clipFrom.isEmpty() && !clipTo.isEmpty()) {
-                //算出裁剪比率
+                //绠楀嚭瑁佸壀姣旂巼
                 float dx = Math.min(1.0f, clipTo.width() * 1.0f / clipFrom.width() * 1.0f);
                 float dy = Math.min(1.0f, clipTo.height() * 1.0f / clipFrom.height() * 1.0f);
-                //因为scroller是对起始值和终点值之间的数值影响，所以减去1，如果为0，意味着不裁剪，因为目标值比开始值大，而画布无法再扩大了，所以忽略
-                dx = dx - 1;
+                //鍥犱负scroller鏄璧峰鍊煎拰缁堢偣鍊间箣闂寸殑鏁板€煎奖鍝嶏紝鎵€浠ュ噺鍘?锛屽鏋滀负0锛屾剰鍛崇潃涓嶈鍓紝鍥犱负鐩爣鍊兼瘮寮€濮嬪€煎ぇ锛岃€岀敾甯冩棤娉曞啀鎵╁ぇ浜嗭紝鎵€浠ュ拷鐣?                dx = dx - 1;
                 dy = dy - 1;
-                //从1开始,乘以1w保证精度
+                //浠?寮€濮?涔樹互1w淇濊瘉绮惧害
                 clipScroller.startScroll((int) (0 * PRECISION), (int) (0 * PRECISION), (int) (dx * PRECISION), (int) (dy * PRECISION), ANIMA_DURATION);
             }
         }
@@ -435,27 +432,25 @@ public class GalleryPhotoView extends PhotoView {
 
                 KLog.i("clip", curX, curY);
 
-                //算出当前的移动像素的综合
+                //绠楀嚭褰撳墠鐨勭Щ鍔ㄥ儚绱犵殑缁煎悎
                 float dx = clipFrom.width() * curX;
                 float dy = clipFrom.height() * curY;
 
 
                 /*
-                 裁剪动画算法是一个。。。初中的简单方程题
+                 瑁佸壀鍔ㄧ敾绠楁硶鏄竴涓€傘€傘€傚垵涓殑绠€鍗曟柟绋嬮
 
-                 设裁剪过程中，左边缘移动dl个像素，右边缘移动dr个像素
-                 由上面dx算出dl+dr=dx;
-                 因为d和dr的比率可知，因此可以知道dLeft和dRight的相对速率
-                 比如左边裁剪1像素，而右边宽度是左边的3倍，则右边应该裁剪3像素才追得上左边
-                 联立方程：
-                 1：dl+dr=dx;
-                 2：dl/dr=a;
-                 则由2可得
+                 璁捐鍓繃绋嬩腑锛屽乏杈圭紭绉诲姩dl涓儚绱狅紝鍙宠竟缂樼Щ鍔╠r涓儚绱?                 鐢变笂闈x绠楀嚭dl+dr=dx;
+                 鍥犱负d鍜宒r鐨勬瘮鐜囧彲鐭ワ紝鍥犳鍙互鐭ラ亾dLeft鍜宒Right鐨勭浉瀵归€熺巼
+                 姣斿宸﹁竟瑁佸壀1鍍忕礌锛岃€屽彸杈瑰搴︽槸宸﹁竟鐨?鍊嶏紝鍒欏彸杈瑰簲璇ヨ鍓?鍍忕礌鎵嶈拷寰椾笂宸﹁竟
+                 鑱旂珛鏂圭▼锛?                 1锛歞l+dr=dx;
+                 2锛歞l/dr=a;
+                 鍒欑敱2鍙緱
                  dl=a*dr;
-                 代入1
+                 浠ｅ叆1
                  dr*(a+1)=dx;
-                 可以算得出dr
-                 再次代入1可知
+                 鍙互绠楀緱鍑篸r
+                 鍐嶆浠ｅ叆1鍙煡
                  dl=dx-dr
                  */
 
@@ -574,3 +569,4 @@ public class GalleryPhotoView extends PhotoView {
         return d.getIntrinsicHeight();
     }
 }
+

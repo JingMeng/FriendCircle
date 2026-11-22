@@ -1,8 +1,8 @@
-package razerdp.github.com.lib.common.entity;
+﻿package razerdp.github.com.lib.common.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 
 import java.io.Serializable;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 import razerdp.github.com.lib.utils.StringUtil;
 
 /**
- * Created by 大灯泡 on 2017/10/12.
+ * Created by 澶х伅娉?on 2017/10/12.
  */
 public class ImageInfo implements Serializable, Parcelable, Cloneable, Comparable<ImageInfo> {
     public final String imagePath;
@@ -67,7 +67,7 @@ public class ImageInfo implements Serializable, Parcelable, Cloneable, Comparabl
 
     @Override
     public ImageInfo clone() throws CloneNotSupportedException {
-        //因为这里只有一些基础数据，所以就浅复制足够了
+        //鍥犱负杩欓噷鍙湁涓€浜涘熀纭€鏁版嵁锛屾墍浠ュ氨娴呭鍒惰冻澶熶簡
         return (ImageInfo) super.clone();
     }
 
@@ -79,7 +79,7 @@ public class ImageInfo implements Serializable, Parcelable, Cloneable, Comparabl
         return -1;
     }
 
-    //深复制，暂时不需要，另外利用流的方法的话，类需要实现Serializable接口
+    //娣卞鍒讹紝鏆傛椂涓嶉渶瑕侊紝鍙﹀鍒╃敤娴佺殑鏂规硶鐨勮瘽锛岀被闇€瑕佸疄鐜癝erializable鎺ュ彛
    /* public Object cloneDeepInternal() throws IOException, ClassNotFoundException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(bos);
@@ -103,3 +103,4 @@ public class ImageInfo implements Serializable, Parcelable, Cloneable, Comparabl
         return TextUtils.isEmpty(imagePath) ? thumbnailPath : imagePath;
     }
 }
+

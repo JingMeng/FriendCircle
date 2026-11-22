@@ -1,11 +1,11 @@
-package razerdp.friendcircle.activity.other;
+﻿package razerdp.friendcircle.activity.other;
 
 import android.content.Intent;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,7 +23,7 @@ import razerdp.github.com.ui.base.BaseTitleBarActivity;
 import razerdp.github.com.ui.widget.commentwidget.ExTextView;
 
 /**
- * Created by 大灯泡 on 2017/12/20.
+ * Created by 澶х伅娉?on 2017/12/20.
  */
 public class ServiceInfoActivity extends BaseTitleBarActivity implements View.OnClickListener {
     private ExTextView tvTitle;
@@ -49,7 +49,7 @@ public class ServiceInfoActivity extends BaseTitleBarActivity implements View.On
     }
 
     private void initView() {
-        setTitle("服务器消息");
+        setTitle("鏈嶅姟鍣ㄦ秷鎭?);
         tvTitle = (ExTextView) findViewById(R.id.tv_title);
         tvContent = (ExTextView) findViewById(R.id.tv_content);
 
@@ -102,3 +102,4 @@ public class ServiceInfoActivity extends BaseTitleBarActivity implements View.On
         }
     }
 }
+

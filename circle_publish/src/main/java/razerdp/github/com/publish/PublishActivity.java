@@ -1,8 +1,8 @@
-package razerdp.github.com.publish;
+﻿package razerdp.github.com.publish;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
@@ -43,10 +43,9 @@ import razerdp.github.com.ui.widget.popup.SelectPhotoMenuPopup;
 
 
 /**
- * Created by 大灯泡 on 2017/3/1.
+ * Created by 澶х伅娉?on 2017/3/1.
  * <p>
- * 发布朋友圈页面
- */
+ * 鍙戝竷鏈嬪弸鍦堥〉闈? */
 
 @Route(path = RouterList.PublishActivity.path)
 public class PublishActivity extends BaseTitleBarActivity {
@@ -87,7 +86,7 @@ public class PublishActivity extends BaseTitleBarActivity {
         mInputContent = findView(R.id.publish_input);
         mPreviewImageView = findView(R.id.preview_image_content);
         ViewUtil.setViewsVisible(mode == RouterList.PublishActivity.MODE_TEXT ? View.GONE : View.VISIBLE, mPreviewImageView);
-        mInputContent.setHint(mode == RouterList.PublishActivity.MODE_MULTI ? "这一刻的想法..." : null);
+        mInputContent.setHint(mode == RouterList.PublishActivity.MODE_MULTI ? "杩欎竴鍒荤殑鎯虫硶..." : null);
         mInputContent.addTextChangedListener(new TextWatcherAdapter() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -159,12 +158,12 @@ public class PublishActivity extends BaseTitleBarActivity {
 
     //title init
     private void initTitle() {
-        setTitle(mode == RouterList.PublishActivity.MODE_TEXT ? "发表文字" : null);
+        setTitle(mode == RouterList.PublishActivity.MODE_TEXT ? "鍙戣〃鏂囧瓧" : null);
         setTitleRightTextColor(mode != RouterList.PublishActivity.MODE_TEXT);
         setTitleMode(TitleBar.MODE_BOTH);
-        setTitleLeftText("取消");
+        setTitleLeftText("鍙栨秷");
         setTitleLeftIcon(0);
-        setTitleRightText("发送");
+        setTitleRightText("鍙戦€?);
         setTitleRightIcon(0);
     }
 
@@ -277,7 +276,7 @@ public class PublishActivity extends BaseTitleBarActivity {
             @Override
             public void onCompress(long current, long target) {
                 float progress = (float) current / target;
-                mPopupProgress.setProgressTips("正在压缩第" + current + "/" + target + "张图片");
+                mPopupProgress.setProgressTips("姝ｅ湪鍘嬬缉绗? + current + "/" + target + "寮犲浘鐗?);
                 mPopupProgress.setProgress((int) (progress * 100));
             }
 
@@ -293,20 +292,16 @@ public class PublishActivity extends BaseTitleBarActivity {
         BmobFile.uploadBatch(uploadTaskPaths, new UploadBatchListener() {
             @Override
             public void onSuccess(List<BmobFile> list, List<String> list1) {
-                //1、有多少个文件上传，onSuccess方法就会执行多少次;
-                //2、通过onSuccess回调方法中的files或urls集合的大小与上传的总文件个数比较，如果一样，则表示全部文件上传成功。
-                if (!ToolUtil.isListEmpty(list1) && list1.size() == uploadTaskPaths.length) {
+                //1銆佹湁澶氬皯涓枃浠朵笂浼狅紝onSuccess鏂规硶灏变細鎵ц澶氬皯娆?
+                //2銆侀€氳繃onSuccess鍥炶皟鏂规硶涓殑files鎴杣rls闆嗗悎鐨勫ぇ灏忎笌涓婁紶鐨勬€绘枃浠朵釜鏁版瘮杈冿紝濡傛灉涓€鏍凤紝鍒欒〃绀哄叏閮ㄦ枃浠朵笂浼犳垚鍔熴€?                if (!ToolUtil.isListEmpty(list1) && list1.size() == uploadTaskPaths.length) {
                     publishInternal(inputContent, list1);
                 }
             }
 
             @Override
             public void onProgress(int curIndex, int curPercent, int total, int totalPercent) {
-                //1、curIndex--表示当前第几个文件正在上传
-                //2、curPercent--表示当前上传文件的进度值（百分比）
-                //3、total--表示总的上传文件数
-                //4、totalPercent--表示总的上传进度（百分比）
-                mPopupProgress.setProgressTips("正在上传第" + curIndex + "/" + total + "张图片");
+                //1銆乧urIndex--琛ㄧず褰撳墠绗嚑涓枃浠舵鍦ㄤ笂浼?                //2銆乧urPercent--琛ㄧず褰撳墠涓婁紶鏂囦欢鐨勮繘搴﹀€硷紙鐧惧垎姣旓級
+                //3銆乼otal--琛ㄧず鎬荤殑涓婁紶鏂囦欢鏁?                //4銆乼otalPercent--琛ㄧず鎬荤殑涓婁紶杩涘害锛堢櫨鍒嗘瘮锛?                mPopupProgress.setProgressTips("姝ｅ湪涓婁紶绗? + curIndex + "/" + total + "寮犲浘鐗?);
                 mPopupProgress.setProgress(totalPercent);
                 if (!mPopupProgress.isShowing()) {
                     mPopupProgress.showPopupWindow();
@@ -322,13 +317,13 @@ public class PublishActivity extends BaseTitleBarActivity {
     }
 
     private void publishInternal(String input, List<String> uploadPicPaths) {
-        mPopupProgress.setProgressTips("正在发布");
+        mPopupProgress.setProgressTips("姝ｅ湪鍙戝竷");
         if (!mPopupProgress.isShowing()) {
             mPopupProgress.showPopupWindow();
         }
         AddMomentsRequest addMomentsRequest = new AddMomentsRequest();
         addMomentsRequest.setAuthId(LocalHostManager.INSTANCE.getUserid())
-                //暂时Host强制使用开发者id
+                //鏆傛椂Host寮哄埗浣跨敤寮€鍙戣€卛d
                 .setHostId(AppSetting.loadStringPreferenceByKey(AppSetting.HOST_ID, "MMbKLCCU"))
                 .addText(input);
         if (!ToolUtil.isListEmpty(uploadPicPaths)) {
@@ -340,7 +335,7 @@ public class PublishActivity extends BaseTitleBarActivity {
             @Override
             public void onSuccess(String response, int requestType) {
                 mPopupProgress.dismiss();
-                UIHelper.ToastMessage("发布成功");
+                UIHelper.ToastMessage("鍙戝竷鎴愬姛");
                 setResult(RESULT_OK);
                 finish();
             }
@@ -353,3 +348,4 @@ public class PublishActivity extends BaseTitleBarActivity {
         addMomentsRequest.execute();
     }
 }
+

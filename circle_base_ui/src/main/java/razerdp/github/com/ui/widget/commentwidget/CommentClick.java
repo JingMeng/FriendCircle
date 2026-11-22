@@ -1,8 +1,8 @@
-package razerdp.github.com.ui.widget.commentwidget;
+﻿package razerdp.github.com.ui.widget.commentwidget;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextPaint;
 import android.view.View;
 
@@ -10,8 +10,8 @@ import razerdp.github.com.ui.util.UIHelper;
 import razerdp.github.com.ui.widget.span.ClickableSpanEx;
 
 /**
- * Created by 大灯泡 on 2016/2/23.
- * 评论点击事件
+ * Created by 澶х伅娉?on 2016/2/23.
+ * 璇勮鐐瑰嚮浜嬩欢
  */
 public class CommentClick extends ClickableSpanEx {
     private Context mContext;
@@ -86,3 +86,4 @@ public class CommentClick extends ClickableSpanEx {
         }
     }
 }
+

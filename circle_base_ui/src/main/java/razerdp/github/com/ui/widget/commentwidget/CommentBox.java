@@ -1,9 +1,9 @@
-package razerdp.github.com.ui.widget.commentwidget;
+﻿package razerdp.github.com.ui.widget.commentwidget;
 
 import android.content.Context;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -19,12 +19,11 @@ import razerdp.github.com.lib.utils.StringUtil;
 import razerdp.github.com.ui.util.UIHelper;
 
 /**
- * Created by 大灯泡 on 2016/12/8.
+ * Created by 澶х伅娉?on 2016/12/8.
  * <p>
- * 评论输入框
- */
+ * 璇勮杈撳叆妗? */
 
-// FIXME: 2016/12/13 跟别的控件耦合度较高，后期考虑优化
+// FIXME: 2016/12/13 璺熷埆鐨勬帶浠惰€﹀悎搴﹁緝楂橈紝鍚庢湡鑰冭檻浼樺寲
 public class CommentBox extends FrameLayout {
 
     private EditText mInputContent;
@@ -33,7 +32,7 @@ public class CommentBox extends FrameLayout {
 
     private boolean isShowing;
 
-    //草稿
+    //鑽夌
     private String draftString;
 
     private IComment mIComment;
@@ -43,9 +42,9 @@ public class CommentBox extends FrameLayout {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({CommentType.TYPE_CREATE, CommentType.TYPE_REPLY})
     public @interface CommentType {
-        //评论
+        //璇勮
         int TYPE_CREATE = 0x10;
-        //回复
+        //鍥炲
         int TYPE_REPLY = 0x11;
     }
 
@@ -84,14 +83,12 @@ public class CommentBox extends FrameLayout {
         if (isShowing) return;
         this.isShowing = true;
         this.mIComment = commentInfo;
-        //对不同的回复动作执行不同的
-        if (mIComment != null) {
-            mInputContent.setHint("回复 " + mIComment.getCommentCreatorName() + ":");
+        //瀵逛笉鍚岀殑鍥炲鍔ㄤ綔鎵ц涓嶅悓鐨?        if (mIComment != null) {
+            mInputContent.setHint("鍥炲 " + mIComment.getCommentCreatorName() + ":");
         } else {
-            mInputContent.setHint("评论");
+            mInputContent.setHint("璇勮");
         }
-        //对于同一条动态恢复草稿，否则不恢复
-        if (TextUtils.equals(momentid, this.momentid) && StringUtil.noEmpty(draftString)) {
+        //瀵逛簬鍚屼竴鏉″姩鎬佹仮澶嶈崏绋匡紝鍚﹀垯涓嶆仮澶?        if (TextUtils.equals(momentid, this.momentid) && StringUtil.noEmpty(draftString)) {
             mInputContent.setText(draftString);
             mInputContent.setSelection(draftString.length());
         } else {
@@ -115,11 +112,10 @@ public class CommentBox extends FrameLayout {
     }
 
     /**
-     * 切换评论框的状态
-     *
+     * 鍒囨崲璇勮妗嗙殑鐘舵€?     *
      * @param momentid
      * @param commentInfo
-     * @param clearDraft  是否清除草稿
+     * @param clearDraft  鏄惁娓呴櫎鑽夌
      */
     public void toggleCommentBox(@NonNull String momentid, @Nullable IComment commentInfo, boolean clearDraft) {
         if (isShowing) {
@@ -181,3 +177,4 @@ public class CommentBox extends FrameLayout {
         void onCommentSendClick(View v, IComment comment, String commentContent);
     }
 }
+

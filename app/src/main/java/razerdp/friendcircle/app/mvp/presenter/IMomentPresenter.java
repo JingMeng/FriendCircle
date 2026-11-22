@@ -1,7 +1,7 @@
-package razerdp.friendcircle.app.mvp.presenter;
+﻿package razerdp.friendcircle.app.mvp.presenter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.razerdp.github.com.common.entity.CommentInfo;
 import com.razerdp.github.com.common.entity.LikesInfo;
@@ -14,7 +14,7 @@ import razerdp.github.com.lib.mvp.IBasePresenter;
 
 
 /**
- * Created by 大灯泡 on 2016/12/7.
+ * Created by 澶х伅娉?on 2016/12/7.
  */
 
 public interface IMomentPresenter extends IBasePresenter<IMomentView> {
@@ -31,3 +31,4 @@ public interface IMomentPresenter extends IBasePresenter<IMomentView> {
     void deleteMoments(Context context,@NonNull MomentsInfo momentsInfo);
 
 }
+

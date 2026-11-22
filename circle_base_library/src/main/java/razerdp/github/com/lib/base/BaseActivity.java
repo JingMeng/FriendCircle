@@ -1,14 +1,14 @@
-package razerdp.github.com.lib.base;
+﻿package razerdp.github.com.lib.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -20,7 +20,7 @@ import razerdp.github.com.lib.api.AppContext;
 import razerdp.github.com.lib.helper.PermissionHelper;
 
 /**
- * Created by 大灯泡 on 2017/3/22.
+ * Created by 澶х伅娉?on 2017/3/22.
  * <p>
  * BaseActivity
  */
@@ -35,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        KLog.i("当前打开 :  " + this.getClass().getSimpleName());
+        KLog.i("褰撳墠鎵撳紑 :  " + this.getClass().getSimpleName());
         if (mPermissionHelper == null) {
             mPermissionHelper = new PermissionHelper(this);
         }
@@ -77,10 +77,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      * run in {@link BaseActivity#onCreate(Bundle)} but before {@link AppCompatActivity#setContentView(int)}
      * <p>
      * <p>
-     * 如果有intent，则需要处理这个intent（该方法在onCreate里面执行，但在setContentView之前调用）
-     *
+     * 濡傛灉鏈塱ntent锛屽垯闇€瑕佸鐞嗚繖涓猧ntent锛堣鏂规硶鍦╫nCreate閲岄潰鎵ц锛屼絾鍦╯etContentView涔嬪墠璋冪敤锛?     *
      * @param intent
-     * @return false:关闭activity
+     * @return false:鍏抽棴activity
      */
     public abstract void onHandleIntent(Intent intent);
 
@@ -94,15 +93,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 隐藏状态栏
+     * 闅愯棌鐘舵€佹爮
      * <p>
-     * 在setContentView前调用
-     */
+     * 鍦╯etContentView鍓嶈皟鐢?     */
     protected void hideStatusBar() {
         final int sdkVer = Build.VERSION.SDK_INT;
         if (sdkVer < 16) {
-            //4.0及一下
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //4.0鍙婁竴涓?            requestWindowFeature(Window.FEATURE_NO_TITLE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         } else {
@@ -126,3 +123,4 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 }
+

@@ -1,11 +1,11 @@
-package razerdp.github.com.photoselect.fragment;
+﻿package razerdp.github.com.photoselect.fragment;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
@@ -35,9 +35,9 @@ import razerdp.github.com.photoselect.PhotoSelectActivity;
 import razerdp.github.com.photoselect.R;
 
 /**
- * Created by 大灯泡 on 2017/3/29.
+ * Created by 澶х伅娉?on 2017/3/29.
  * <p>
- * 相册缩略图浏览fragment
+ * 鐩稿唽缂╃暐鍥炬祻瑙坒ragment
  */
 
 public class PhotoGridFragement extends BaseFragment {
@@ -79,7 +79,7 @@ public class PhotoGridFragement extends BaseFragment {
     private void scanImgSyncWithProgress() {
         AppSetting.saveBooleanPreferenceByKey(AppSetting.APP_HAS_SCAN_IMG, true);
         final PopupProgress popupProgress = new PopupProgress(getActivity());
-        popupProgress.setProgressTips("正在扫描系统相册...");
+        popupProgress.setProgressTips("姝ｅ湪鎵弿绯荤粺鐩稿唽...");
         LocalPhotoManager.INSTANCE.scanImg(new LocalPhotoManager.OnScanProgresslistener() {
 
             @Override
@@ -114,8 +114,7 @@ public class PhotoGridFragement extends BaseFragment {
     @Override
     protected void onInitView(View rootView) {
         vh = new ViewHolder();
-        //popup在activity没初始化完成前可能无法展示，因此需要延迟一点。。。
-        getActivity().getWindow().getDecorView().postDelayed(new Runnable() {
+        //popup鍦╝ctivity娌″垵濮嬪寲瀹屾垚鍓嶅彲鑳芥棤娉曞睍绀猴紝鍥犳闇€瑕佸欢杩熶竴鐐广€傘€傘€?        getActivity().getWindow().getDecorView().postDelayed(new Runnable() {
             @Override
             public void run() {
                 getPermissionHelper().requestPermission(PermissionHelper.CODE_READ_EXTERNAL_STORAGE, new PermissionHelper.OnPermissionGrantListener() {
@@ -183,7 +182,7 @@ public class PhotoGridFragement extends BaseFragment {
     private View.OnClickListener onPhotoEditClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            UIHelper.ToastMessage("编辑功能估计要有很长一段时间之后才能去完善这哦");
+            UIHelper.ToastMessage("缂栬緫鍔熻兘浼拌瑕佹湁寰堥暱涓€娈垫椂闂翠箣鍚庢墠鑳藉幓瀹屽杽杩欏摝");
         }
     };
 
@@ -245,7 +244,7 @@ public class PhotoGridFragement extends BaseFragment {
 
                 ViewUtil.setViewsEnableAndClickable(false, false, mPhotoEdit, mPhotoPreview, mFinish);
             } else {
-                //如果选择的照片大于一张，是不允许编辑的(iOS版微信的交互如此设计)
+                //濡傛灉閫夋嫨鐨勭収鐗囧ぇ浜庝竴寮狅紝鏄笉鍏佽缂栬緫鐨?iOS鐗堝井淇＄殑浜や簰濡傛璁捐)
                 mPhotoEdit.setTextColor(count == 1 ? UIHelper.getResourceColor(R.color.text_black) : UIHelper.getResourceColor(R.color.text_gray));
                 mPhotoPreview.setTextColor(UIHelper.getResourceColor(R.color.text_black));
                 mFinish.setTextColor(UIHelper.getResourceColor(R.color.wechat_green_bg));
@@ -260,3 +259,4 @@ public class PhotoGridFragement extends BaseFragment {
         }
     }
 }
+

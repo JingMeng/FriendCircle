@@ -1,4 +1,4 @@
-package razerdp.github.com.ui.util;
+﻿package razerdp.github.com.ui.util;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -6,7 +6,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,24 +19,23 @@ import com.socks.library.KLog;
 import razerdp.github.com.lib.api.AppContext;
 
 /**
- * Created by 大灯泡 on 2016/10/26.
+ * Created by 澶х伅娉?on 2016/10/26.
  * <p>
- * ui工具类
- */
+ * ui宸ュ叿绫? */
 public class UIHelper {
 
     // =============================================================tools
     // methods
 
     /**
-     * dip转px
+     * dip杞琾x
      */
     public static int dipToPx(float dip) {
         return (int) (dip * AppContext.getResources().getDisplayMetrics().density + 0.5f);
     }
 
     /**
-     * px转dip
+     * px杞琩ip
      */
     public static int pxToDip(float pxValue) {
         final float scale = AppContext.getResources().getDisplayMetrics().density;
@@ -44,16 +43,14 @@ public class UIHelper {
     }
 
     /**
-     * 将sp值转换为px值
-     */
+     * 灏唖p鍊艰浆鎹负px鍊?     */
     public static int sp2px(float spValue) {
         final float fontScale = AppContext.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
     /**
-     * 获取屏幕分辨率：宽
-     */
+     * 鑾峰彇灞忓箷鍒嗚鲸鐜囷細瀹?     */
     public static int getScreenWidthPix(@Nullable Context context) {
         if (context == null) context = AppContext.getAppContext();
         int width = context.getResources().getDisplayMetrics().widthPixels;
@@ -61,8 +58,7 @@ public class UIHelper {
     }
 
     /**
-     * 获取屏幕分辨率：高
-     */
+     * 鑾峰彇灞忓箷鍒嗚鲸鐜囷細楂?     */
     public static int getScreenHeightPix(@Nullable Context context) {
         if (context == null) context = AppContext.getAppContext();
         int height = context.getResources().getDisplayMetrics().heightPixels;
@@ -70,8 +66,7 @@ public class UIHelper {
     }
 
     /**
-     * 获取状态栏的高度
-     */
+     * 鑾峰彇鐘舵€佹爮鐨勯珮搴?     */
     public static int getStatusBarHeight(Context context) {
         int result = 0;
         int resourceId = context.getResources()
@@ -84,8 +79,7 @@ public class UIHelper {
     }
 
     /**
-     * 隐藏软键盘
-     */
+     * 闅愯棌杞敭鐩?     */
     public static void hideInputMethod(View view) {
         try {
             InputMethodManager imm = (InputMethodManager) view.getContext()
@@ -109,8 +103,7 @@ public class UIHelper {
     }
 
     /**
-     * 显示软键盘
-     */
+     * 鏄剧ず杞敭鐩?     */
     public static void showInputMethod(View view) {
         if (view == null) return;
         if (view instanceof EditText) view.requestFocus();
@@ -123,20 +116,18 @@ public class UIHelper {
     }
 
     /**
-     * 显示软键盘
-     */
+     * 鏄剧ず杞敭鐩?     */
     public static void showInputMethod(Context context) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     /**
-     * 多少时间后显示软键盘
+     * 澶氬皯鏃堕棿鍚庢樉绀鸿蒋閿洏
      */
     public static void showInputMethod(final View view, long delayMillis) {
         if (view != null)
-        // 显示输入法
-        {
+        // 鏄剧ず杈撳叆娉?        {
             view.postDelayed(new Runnable() {
 
                 @Override
@@ -149,15 +140,14 @@ public class UIHelper {
 
 
     /**
-     * Toast封装
+     * Toast灏佽
      */
     public static void ToastMessage(String msg) {
         Toast.makeText(AppContext.getAppContext(), msg, Toast.LENGTH_LONG).show();
     }
 
     /**
-     * 调整窗口的透明度
-     *
+     * 璋冩暣绐楀彛鐨勯€忔槑搴?     *
      * @param from
      * @param to
      */
@@ -181,7 +171,7 @@ public class UIHelper {
 
     /**
      * =============================================================
-     * 资源工具
+     * 璧勬簮宸ュ叿
      */
 
     public static int getResourceColor(int colorResId) {
@@ -192,3 +182,4 @@ public class UIHelper {
         }
     }
 }
+

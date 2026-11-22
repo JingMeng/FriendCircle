@@ -1,6 +1,6 @@
-package razerdp.friendcircle.app.manager;
+﻿package razerdp.friendcircle.app.manager;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.razerdp.github.com.common.entity.other.ServiceInfo;
 
@@ -12,10 +12,9 @@ import cn.bmob.v3.listener.FindListener;
 import razerdp.github.com.lib.utils.ToolUtil;
 
 /**
- * Created by 大灯泡 on 2017/12/20.
+ * Created by 澶х伅娉?on 2017/12/20.
  * <p>
- * 服务器信息
- */
+ * 鏈嶅姟鍣ㄤ俊鎭? */
 
 public enum ServiceInfoManager {
     INSTANCE;
@@ -39,3 +38,4 @@ public enum ServiceInfoManager {
     }
 
 }
+

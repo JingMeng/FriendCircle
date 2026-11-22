@@ -1,11 +1,11 @@
-package razerdp.github.com.lib.manager.localphoto;
+﻿package razerdp.github.com.lib.manager.localphoto;
 
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.google.gson.reflect.TypeToken;
 import com.socks.library.KLog;
@@ -26,20 +26,19 @@ import razerdp.github.com.lib.utils.TimeUtil;
 import razerdp.github.com.lib.common.entity.ImageInfo;
 
 /**
- * Created by 大灯泡 on 2017/3/23.
+ * Created by 澶х伅娉?on 2017/3/23.
  * <p>
- * 本地照片管理类(单例)
+ * 鏈湴鐓х墖绠＄悊绫?鍗曚緥)
  */
 
 public enum LocalPhotoManager {
     INSTANCE;
     private static final String TAG = "LocalPhotoManager";
     public static final String LOCAL_FILE_NAME = "LocalPhotoFile";
-    private static final String ALL_PHOTO_TITLE = "所有照片";
+    private static final String ALL_PHOTO_TITLE = "鎵€鏈夌収鐗?;
     private static final String QUERY_ORDER = " ASC";
     private static final boolean SCAN_EXTERNAL_SD = true;
-    //1分钟内不再扫描
-    private static final long SCAN_INTERVAL = 60 * 1000;
+    //1鍒嗛挓鍐呬笉鍐嶆壂鎻?    private static final long SCAN_INTERVAL = 60 * 1000;
 
     private WeakHandler handler = new WeakHandler();
 
@@ -47,13 +46,13 @@ public enum LocalPhotoManager {
     long lastScanTime;
 
 
-    //访问系统数据库的大图查询数据
+    //璁块棶绯荤粺鏁版嵁搴撶殑澶у浘鏌ヨ鏁版嵁
     public static final String[] STORE_IMGS = {MediaStore.Images.ImageColumns._ID,
             MediaStore.Images.ImageColumns.DATA,
             MediaStore.Images.ImageColumns.ORIENTATION,
             MediaStore.Images.ImageColumns.BUCKET_DISPLAY_NAME,
             MediaStore.Images.ImageColumns.DATE_TAKEN};
-    //访问系统数据库的小图查询数据
+    //璁块棶绯荤粺鏁版嵁搴撶殑灏忓浘鏌ヨ鏁版嵁
     public static final String[] THUMBNAIL_STORE_IMAGE = {MediaStore.Images.Thumbnails._ID, MediaStore.Images.Thumbnails.DATA};
 
     private static final LinkedHashMap<String, List<ImageInfo>> sALBUM = new LinkedHashMap<>();
@@ -80,9 +79,7 @@ public enum LocalPhotoManager {
         lastScanTime = AppSetting.loadLongPreferenceByKey(AppSetting.APP_LAST_SCAN_IMG_TIME, 0);
 
         boolean callImmediately = checkLocalSerializableFile();
-        //如果本地文件已经有了，那么可以立即回调，提高用户体验。
-        //然后再后台扫一次更新本地文件记录
-        if (callImmediately) {
+        //濡傛灉鏈湴鏂囦欢宸茬粡鏈変簡锛岄偅涔堝彲浠ョ珛鍗冲洖璋冿紝鎻愰珮鐢ㄦ埛浣撻獙銆?        //鐒跺悗鍐嶅悗鍙版壂涓€娆℃洿鏂版湰鍦版枃浠惰褰?        if (callImmediately) {
             callProgress(listener, 100);
             callFinish(listener);
             reset();
@@ -91,7 +88,7 @@ public enum LocalPhotoManager {
         long curTime = System.currentTimeMillis();
         if (curTime - lastScanTime <= SCAN_INTERVAL) {
             if (new File(AppFileHelper.getAppDataPath().concat(LOCAL_FILE_NAME)).exists()) {
-                callError(listener, "1分钟内不应该再次扫描", new IllegalStateException("1分钟内不应该再次扫描"));
+                callError(listener, "1鍒嗛挓鍐呬笉搴旇鍐嶆鎵弿", new IllegalStateException("1鍒嗛挓鍐呬笉搴旇鍐嶆鎵弿"));
                 reset();
                 return;
             }
@@ -119,12 +116,12 @@ public enum LocalPhotoManager {
                         null,
                         MediaStore.Images.ImageColumns.DATE_TAKEN.concat(QUERY_ORDER));
         if (cursor == null) {
-            callError(listener, "cursor为空", null);
+            callError(listener, "cursor涓虹┖", null);
             reset();
             return;
         }
         sALBUM.clear();
-        //构造thumb的查询语句(where id = xxx)
+        //鏋勯€爐humb鐨勬煡璇㈣鍙?where id = xxx)
         final String[] thumbWhereQuery = new String[1];
         List<ImageInfo> allImageInfoLists = new ArrayList<>();
         final int cursorCount = cursor.getCount();
@@ -168,12 +165,12 @@ public enum LocalPhotoManager {
         cursor.close();
         callFinish(listener);
         reset();
-        KLog.i(TAG, "scan完成");
+        KLog.i(TAG, "scan瀹屾垚");
         if (sALBUM == sWRITE_ALBUM && !sALBUM.isEmpty()) {
             sALBUM.clear();
             sALBUM.putAll(sWRITE_ALBUM);
         }
-        //事实上io流的速度也是杠杠的，所以这里可以采取写入到本地文件的方法来存储扫描结果
+        //浜嬪疄涓奿o娴佺殑閫熷害涔熸槸鏉犳潬鐨勶紝鎵€浠ヨ繖閲屽彲浠ラ噰鍙栧啓鍏ュ埌鏈湴鏂囦欢鐨勬柟娉曟潵瀛樺偍鎵弿缁撴灉
         ThreadPoolManager.execute(new WriteToLocalRunnable(sALBUM));
     }
 
@@ -192,13 +189,11 @@ public enum LocalPhotoManager {
         if (!sALBUM.isEmpty()) return true;
         File file = new File(AppFileHelper.getAppDataPath().concat(LOCAL_FILE_NAME));
         if (file.exists()) {
-            KLog.i(TAG, "当前时间  >>>  " + TimeUtil.longToTimeStr(System.currentTimeMillis(), TimeUtil.YYYYMMDDHHMMSS));
-            KLog.i(TAG, "文件修改时间  >>>  " + TimeUtil.longToTimeStr(file.lastModified(), TimeUtil.YYYYMMDDHHMMSS));
-            //每30分钟进行一次静默扫描
-            boolean reScanSilent = System.currentTimeMillis() - file.lastModified() > 30 * TimeUtil.MINUTE * 1000;
-            //每周进行一次回调扫描
-            boolean reScanFullAndCallBack = System.currentTimeMillis() - file.lastModified() > 24 * 7 * TimeUtil.HOUR * 1000;
-            KLog.i(TAG, "需要重新扫描？  >>>  " + reScanSilent);
+            KLog.i(TAG, "褰撳墠鏃堕棿  >>>  " + TimeUtil.longToTimeStr(System.currentTimeMillis(), TimeUtil.YYYYMMDDHHMMSS));
+            KLog.i(TAG, "鏂囦欢淇敼鏃堕棿  >>>  " + TimeUtil.longToTimeStr(file.lastModified(), TimeUtil.YYYYMMDDHHMMSS));
+            //姣?0鍒嗛挓杩涜涓€娆￠潤榛樻壂鎻?            boolean reScanSilent = System.currentTimeMillis() - file.lastModified() > 30 * TimeUtil.MINUTE * 1000;
+            //姣忓懆杩涜涓€娆″洖璋冩壂鎻?            boolean reScanFullAndCallBack = System.currentTimeMillis() - file.lastModified() > 24 * 7 * TimeUtil.HOUR * 1000;
+            KLog.i(TAG, "闇€瑕侀噸鏂版壂鎻忥紵  >>>  " + reScanSilent);
             try {
                 LinkedHashMap<String, List<ImageInfo>> map = GsonUtil.INSTANCE.toLinkHashMap(FileUtil.Read(file.getAbsolutePath()),
                         new TypeToken<LinkedHashMap<String, List<ImageInfo>>>() {
@@ -207,11 +202,11 @@ public enum LocalPhotoManager {
                     sALBUM.clear();
                     sALBUM.putAll(map);
                     if (reScanFullAndCallBack) {
-                        KLog.i(TAG, "全量回调扫描");
+                        KLog.i(TAG, "鍏ㄩ噺鍥炶皟鎵弿");
                         return false;
                     }
                     if (reScanSilent) {
-                        KLog.i(TAG, "静默扫描");
+                        KLog.i(TAG, "闈欓粯鎵弿");
                         scanAsync(sWRITE_ALBUM, null);
                     }
                     return true;
@@ -230,8 +225,7 @@ public enum LocalPhotoManager {
 
     private String getThumbPath(String[] whereQuery) {
         String result = null;
-        //通过大图的id，并且构造cursor的查询语句来获取大图对应的小图
-        Cursor cursor = AppContext.getAppContext()
+        //閫氳繃澶у浘鐨刬d锛屽苟涓旀瀯閫燾ursor鐨勬煡璇㈣鍙ユ潵鑾峰彇澶у浘瀵瑰簲鐨勫皬鍥?        Cursor cursor = AppContext.getAppContext()
                 .getContentResolver()
                 .query(SCAN_EXTERNAL_SD ? MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI : MediaStore.Images.Thumbnails.INTERNAL_CONTENT_URI,
                         THUMBNAIL_STORE_IMAGE,
@@ -265,7 +259,7 @@ public enum LocalPhotoManager {
     }
 
     public void writeToLocal() {
-        KLog.i(TAG, "图库记录写入本地");
+        KLog.i(TAG, "鍥惧簱璁板綍鍐欏叆鏈湴");
         ThreadPoolManager.execute(new WriteToLocalRunnable(sALBUM));
     }
 
@@ -385,8 +379,7 @@ public enum LocalPhotoManager {
     }
 
     /**
-     * 本监听存在于整个app生命期
-     */
+     * 鏈洃鍚瓨鍦ㄤ簬鏁翠釜app鐢熷懡鏈?     */
     class MediaImageContentObserver extends ContentObserver {
 
         /**
@@ -402,9 +395,9 @@ public enum LocalPhotoManager {
         public void onChange(boolean selfChange, Uri uri) {
             super.onChange(selfChange, uri);
             if (uri.compareTo(MediaStore.Images.Media.EXTERNAL_CONTENT_URI) != 0) return;
-            KLog.i(TAG, "监听到系统图库更新  >>>  " + uri.toString());
+            KLog.i(TAG, "鐩戝惉鍒扮郴缁熷浘搴撴洿鏂? >>>  " + uri.toString());
 
-            //查询5分钟内更新的数据
+            //鏌ヨ5鍒嗛挓鍐呮洿鏂扮殑鏁版嵁
             long queryTime = System.currentTimeMillis() - (5 * 60 * 1000);
             final String[] whereQuery = {String.valueOf(queryTime)};
 
@@ -414,8 +407,8 @@ public enum LocalPhotoManager {
                     .query(uri, STORE_IMGS, MediaStore.Images.ImageColumns.DATE_TAKEN.concat(" > ?"),
                             whereQuery, MediaStore.Images.ImageColumns.DATE_TAKEN.concat(QUERY_ORDER));
             if (cursor == null) return;
-            KLog.i(TAG, "查询到  >>  " + cursor.getCount() + " 条数据");
-            // FIXME: 2017/3/24 没错。。。他喵的又是上面的重复步骤，有空把它抽取出来
+            KLog.i(TAG, "鏌ヨ鍒? >>  " + cursor.getCount() + " 鏉℃暟鎹?);
+            // FIXME: 2017/3/24 娌￠敊銆傘€傘€備粬鍠电殑鍙堟槸涓婇潰鐨勯噸澶嶆楠わ紝鏈夌┖鎶婂畠鎶藉彇鍑烘潵
             final String[] thumbWhereQuery = new String[1];
             List<ImageInfo> allImageInfoLists = sALBUM.get(ALL_PHOTO_TITLE);
             if (cursor.moveToLast()) {
@@ -449,10 +442,11 @@ public enum LocalPhotoManager {
                     }
                 }
 
-                KLog.i(TAG, "成功刷新到一条数据 >>>  " + imageInfo.toString());
+                KLog.i(TAG, "鎴愬姛鍒锋柊鍒颁竴鏉℃暟鎹?>>>  " + imageInfo.toString());
             }
             cursor.close();
         }
     }
 
 }
+

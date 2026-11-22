@@ -1,13 +1,14 @@
-package razerdp.github.com.ui.widget.commentwidget;
+﻿package razerdp.github.com.ui.widget.commentwidget;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
- * Created by 大灯泡 on 2017/11/17.
+ * Created by 澶х伅娉?on 2017/11/17.
  * <p>
- * 评论控件点击
+ * 璇勮鎺т欢鐐瑰嚮
  */
 
 public interface OnCommentUserClickListener {
     void onCommentClicked(@NonNull IComment comment,CharSequence text);
 }
+

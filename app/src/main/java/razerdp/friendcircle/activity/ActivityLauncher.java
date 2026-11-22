@@ -1,10 +1,10 @@
-package razerdp.friendcircle.activity;
+﻿package razerdp.friendcircle.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.razerdp.github.com.common.entity.PhotoBrowseInfo;
 import com.razerdp.github.com.common.entity.other.ServiceInfo;
@@ -21,15 +21,15 @@ import razerdp.github.com.publish.PublishActivity;
 import razerdp.github.com.ui.util.SwitchActivityTransitionUtil;
 
 /**
- * Created by 大灯泡 on 2017/3/1.
+ * Created by 澶х伅娉?on 2017/3/1.
  * <p>
- * activity发射器~
+ * activity鍙戝皠鍣▇
  */
 
 public class ActivityLauncher {
 
     /**
-     * 发射到发布朋友圈页面
+     * 鍙戝皠鍒板彂甯冩湅鍙嬪湀椤甸潰
      *
      * @param act
      * @param mode
@@ -52,7 +52,7 @@ public class ActivityLauncher {
     }
 
     /**
-     * 发射到选择图片页面
+     * 鍙戝皠鍒伴€夋嫨鍥剧墖椤甸潰
      *
      * @param act
      */
@@ -63,7 +63,7 @@ public class ActivityLauncher {
     }
 
     /**
-     * 发射到服务器消息页面
+     * 鍙戝皠鍒版湇鍔″櫒娑堟伅椤甸潰
      *
      * @param act
      */
@@ -75,3 +75,4 @@ public class ActivityLauncher {
     }
 
 }
+

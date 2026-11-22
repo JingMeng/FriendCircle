@@ -1,14 +1,14 @@
-package razerdp.github.com.ui.widget.pullrecyclerview;
+﻿package razerdp.github.com.ui.widget.pullrecyclerview;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,26 +53,17 @@ import static razerdp.github.com.ui.widget.pullrecyclerview.CircleRecyclerView.S
 
 
 /**
- * Created by 大灯泡 on 2016/10/29.
+ * Created by 澶х伅娉?on 2016/10/29.
  * <p>
- * 专为朋友圈项目定制的下拉recyclerview
- * 原因在于：
- * 1 - 目前而言，git上大多数的rv都是用的swiperefreshlayout
- * 2 - 大多数rv都不支持下拉后收回下拉头部的
- * 3 - 因为大多数的rv都支持太多功能了，显得有点重，并且有些想要的回调我们都没法拿到
+ * 涓撲负鏈嬪弸鍦堥」鐩畾鍒剁殑涓嬫媺recyclerview
+ * 鍘熷洜鍦ㄤ簬锛? * 1 - 鐩墠鑰岃█锛実it涓婂ぇ澶氭暟鐨剅v閮芥槸鐢ㄧ殑swiperefreshlayout
+ * 2 - 澶у鏁皉v閮戒笉鏀寔涓嬫媺鍚庢敹鍥炰笅鎷夊ご閮ㄧ殑
+ * 3 - 鍥犱负澶у鏁扮殑rv閮芥敮鎸佸お澶氬姛鑳戒簡锛屾樉寰楁湁鐐归噸锛屽苟涓旀湁浜涙兂瑕佺殑鍥炶皟鎴戜滑閮芥病娉曟嬁鍒? * <p>
+ * 缁间笂鎵€杩帮紝骞茶剢鑷繁寮勪竴涓畻浜嗐€傘€傘€傘€? * <p>
+ * 鐩爣锛? * 銆愬熀鏈姹傘€戝洜涓虹浉褰撲簬瀹氬埗锛屽彧涓烘湰椤圭洰鏈嶅姟锛屽洜姝や笉鑰冭檻閫氱敤鎬э紝鏇村鑰冭檻鎵╁睍鎬? * <p>
  * <p>
- * 综上所述，干脆自己弄一个算了。。。。
- * <p>
- * 目标：
- * 【基本要求】因为相当于定制，只为本项目服务，因此不考虑通用性，更多考虑扩展性
- * <p>
- * <p>
- * 1 - 下拉和上拉支持回调
- * 2 - 跟iOS朋友圈下拉头部一样，支持头部在刷新时的回弹
- * 3 - 滑动到底部自动加载更多
- * 4 - addHeaderView。
- * <p>
- * 使用的库：overscroll-decor(https://github.com/EverythingMe/overscroll-decor)
+ * 1 - 涓嬫媺鍜屼笂鎷夋敮鎸佸洖璋? * 2 - 璺焛OS鏈嬪弸鍦堜笅鎷夊ご閮ㄤ竴鏍凤紝鏀寔澶撮儴鍦ㄥ埛鏂版椂鐨勫洖寮? * 3 - 婊戝姩鍒板簳閮ㄨ嚜鍔ㄥ姞杞芥洿澶? * 4 - addHeaderView銆? * <p>
+ * 浣跨敤鐨勫簱锛歰verscroll-decor(https://github.com/EverythingMe/overscroll-decor)
  */
 
 public class CircleRecyclerView extends FrameLayout {
@@ -129,15 +120,14 @@ public class CircleRecyclerView extends FrameLayout {
 
         if (recyclerView == null) {
             recyclerView = (RecyclerView) LayoutInflater.from(context).inflate(R.layout.view_recyclerview, this, false);
-            //new出来的recyclerview并没有滚动条，原因：没有走到View.initializeScrollbars(TypedArray a)
+            //new鍑烘潵鐨剅ecyclerview骞舵病鏈夋粴鍔ㄦ潯锛屽師鍥狅細娌℃湁璧板埌View.initializeScrollbars(TypedArray a)
             //recyclerView = new RecyclerView(context);
             recyclerView.setBackgroundColor(Color.WHITE);
             linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-            //渲染优化，放到render thread做，（prefetch在v25之后可用），机型在萝莉炮(lollipop)后才可以享受此优化（事实上默认是开启的）
-            //linearLayoutManager.setItemPrefetchEnabled(true);
+            //娓叉煋浼樺寲锛屾斁鍒皉ender thread鍋氾紝锛坧refetch鍦╲25涔嬪悗鍙敤锛夛紝鏈哄瀷鍦ㄨ悵鑾夌偖(lollipop)鍚庢墠鍙互浜彈姝や紭鍖栵紙浜嬪疄涓婇粯璁ゆ槸寮€鍚殑锛?            //linearLayoutManager.setItemPrefetchEnabled(true);
             recyclerView.setLayoutManager(linearLayoutManager);
         }
-        //取消默认item变更动画
+        //鍙栨秷榛樿item鍙樻洿鍔ㄧ敾
         recyclerView.setItemAnimator(null);
 
         if (refreshIcon == null) {
@@ -165,7 +155,7 @@ public class CircleRecyclerView extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         if (getChildCount() > 2) {
-            throw new IllegalStateException("咳咳，不能超过两个view哦");
+            throw new IllegalStateException("鍜冲挸锛屼笉鑳借秴杩囦袱涓獀iew鍝?);
         }
         super.onFinishInflate();
     }
@@ -330,17 +320,16 @@ public class CircleRecyclerView extends FrameLayout {
                         }
                     }
                 } else if (offset < 0) {
-                    //底部的overscroll
+                    //搴曢儴鐨刼verscroll
                 }
             }
         });
     }
 
     /**
-     * 判断recyclerview是否滑到底部
+     * 鍒ゆ柇recyclerview鏄惁婊戝埌搴曢儴
      * <p>
-     * 原理：判断滑过的距离加上屏幕上的显示的区域是否比整个控件高度高
-     *
+     * 鍘熺悊锛氬垽鏂粦杩囩殑璺濈鍔犱笂灞忓箷涓婄殑鏄剧ず鐨勫尯鍩熸槸鍚︽瘮鏁翠釜鎺т欢楂樺害楂?     *
      * @return
      */
     public boolean isScrollToBottom() {
@@ -361,8 +350,7 @@ public class CircleRecyclerView extends FrameLayout {
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
             //fix issue #42
-            //按照原来的习惯，我是当RecyclerView滑动停止状态下才检查是否要自动加在更多，但就出现了一个问题，如#42提出的，手指不离开屏幕一直滑动
-            //就会无法加载更多，在iOS朋友圈里，不离开屏幕是可以继续加载的，因此将这里的逻辑移动到了onScrolled，不对滑动状态进行监听了
+            //鎸夌収鍘熸潵鐨勪範鎯紝鎴戞槸褰揜ecyclerView婊戝姩鍋滄鐘舵€佷笅鎵嶆鏌ユ槸鍚﹁鑷姩鍔犲湪鏇村锛屼絾灏卞嚭鐜颁簡涓€涓棶棰橈紝濡?42鎻愬嚭鐨勶紝鎵嬫寚涓嶇寮€灞忓箷涓€鐩存粦鍔?            //灏变細鏃犳硶鍔犺浇鏇村锛屽湪iOS鏈嬪弸鍦堥噷锛屼笉绂诲紑灞忓箷鏄彲浠ョ户缁姞杞界殑锛屽洜姝ゅ皢杩欓噷鐨勯€昏緫绉诲姩鍒颁簡onScrolled锛屼笉瀵规粦鍔ㄧ姸鎬佽繘琛岀洃鍚簡
             /*if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                 if (isScrollToBottom() && currentStatus != REFRESHING) {
                     onRefreshListener.onLoadMore();
@@ -389,8 +377,7 @@ public class CircleRecyclerView extends FrameLayout {
 
 
     /**
-     * 刷新Icon的动作观察者
-     */
+     * 鍒锋柊Icon鐨勫姩浣滆瀵熻€?     */
 
     private static class InnerRefreshIconObserver {
         private ViewOffsetHelper viewOffsetHelper;
@@ -425,8 +412,7 @@ public class CircleRecyclerView extends FrameLayout {
         }
 
         /**
-         * 调整icon的位置界限
-         */
+         * 璋冩暣icon鐨勪綅缃晫闄?         */
         private void adjustRefreshIconPosition() {
             if (refreshIcon.getY() < 0) {
                 refreshIcon.offsetTopAndBottom(Math.abs(refreshIcon.getTop()));
@@ -500,26 +486,26 @@ public class CircleRecyclerView extends FrameLayout {
     }
 
 
-    //------------------------------------------分割线-----------------------------------------------
-    //------------------------------------------分割线-----------------------------------------------
-    //------------------------------------------分割线-----------------------------------------------
+    //------------------------------------------鍒嗗壊绾?----------------------------------------------
+    //------------------------------------------鍒嗗壊绾?----------------------------------------------
+    //------------------------------------------鍒嗗壊绾?----------------------------------------------
 
     /**
-     * 以下为recyclerview 的headeradapter实现方案
+     * 浠ヤ笅涓簉ecyclerview 鐨刪eaderadapter瀹炵幇鏂规
      * <p>
-     * 以Listview的headerView和footerView为模板做出的recyclerview的header和footer
+     * 浠istview鐨刪eaderView鍜宖ooterView涓烘ā鏉垮仛鍑虹殑recyclerview鐨刪eader鍜宖ooter
      */
     private ArrayList<FixedViewInfo> mHeaderViewInfos = new ArrayList<>();
     private ArrayList<FixedViewInfo> mFooterViewInfos = new ArrayList<>();
 
     /**
-     * 不完美解决方法：添加一个header，则从-2开始减1
+     * 涓嶅畬缇庤В鍐虫柟娉曪細娣诲姞涓€涓猦eader锛屽垯浠?2寮€濮嬪噺1
      * header:-2~-98
      */
     private static final int ITEM_VIEW_TYPE_HEADER_START = -2;
     /**
-     * 不完美解决方法：添加一个header，则从-99开始减1
-     * footer:-99~-无穷
+     * 涓嶅畬缇庤В鍐虫柟娉曪細娣诲姞涓€涓猦eader锛屽垯浠?99寮€濮嬪噺1
+     * footer:-99~-鏃犵┓
      */
     private static final int ITEM_VIEW_TYPE_FOOTER_START = -99;
 
@@ -536,8 +522,7 @@ public class CircleRecyclerView extends FrameLayout {
     }
 
     private void checkAndNotifyWrappedViewAdd(RecyclerView.Adapter adapter, FixedViewInfo info, boolean isHeader) {
-        //header和footer只能再setAdapter前使用，如果是set了之后再用，为何不add普通的viewholder而非要Headr或者footer呢
-        if (adapter != null) {
+        //header鍜宖ooter鍙兘鍐峴etAdapter鍓嶄娇鐢紝濡傛灉鏄痵et浜嗕箣鍚庡啀鐢紝涓轰綍涓峚dd鏅€氱殑viewholder鑰岄潪瑕丠eadr鎴栬€協ooter鍛?        if (adapter != null) {
             if (!(adapter instanceof HeaderViewWrapperAdapter)) {
                 adapter = wrapHeaderRecyclerViewAdapterInternal(adapter);
                 if (isHeader) {
@@ -603,3 +588,4 @@ public class CircleRecyclerView extends FrameLayout {
 
 
 }
+

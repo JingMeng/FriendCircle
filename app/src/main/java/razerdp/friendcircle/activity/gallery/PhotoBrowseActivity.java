@@ -1,14 +1,14 @@
-package razerdp.friendcircle.activity.gallery;
+﻿package razerdp.friendcircle.activity.gallery;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -31,16 +31,15 @@ import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * Created by 大灯泡 on 2016/12/16.
+ * Created by 澶х伅娉?on 2016/12/16.
  * <p>
- * 朋友圈图片浏览控件
- */
+ * 鏈嬪弸鍦堝浘鐗囨祻瑙堟帶浠? */
 public class PhotoBrowseActivity extends BaseActivity {
     private static final String TAG = "PhotoBrowseActivity";
 
     private HackyViewPager photoViewpager;
     private View blackBackground;
-    private DotIndicator dotIndicator;//小圆点指示器
+    private DotIndicator dotIndicator;//灏忓渾鐐规寚绀哄櫒
     private List<GalleryPhotoView> viewBuckets;
     private PhotoBrowseInfo photoBrowseInfo;
     private InnerPhotoViewerAdapter adapter;
@@ -112,7 +111,7 @@ public class PhotoBrowseActivity extends BaseActivity {
         Intent intent = new Intent(from, PhotoBrowseActivity.class);
         intent.putExtra("photoinfo", info);
         from.startActivity(intent);
-        //禁用动画
+        //绂佺敤鍔ㄧ敾
         from.overridePendingTransition(0, 0);
     }
 
@@ -183,3 +182,4 @@ public class PhotoBrowseActivity extends BaseActivity {
         }
     }
 }
+

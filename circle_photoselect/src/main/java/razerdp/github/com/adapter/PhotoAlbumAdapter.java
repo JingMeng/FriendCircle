@@ -1,7 +1,7 @@
-package razerdp.github.com.adapter;
+﻿package razerdp.github.com.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,9 +17,9 @@ import com.razerdp.github.com.common.entity.photo.AlbumInfo;
 import razerdp.github.com.photoselect.R;
 
 /**
- * Created by 大灯泡 on 2017/3/24.
+ * Created by 澶х伅娉?on 2017/3/24.
  * <p>
- * 相册adapter
+ * 鐩稿唽adapter
  */
 
 public class PhotoAlbumAdapter extends BaseRecyclerViewAdapter<AlbumInfo> {
@@ -69,3 +69,4 @@ public class PhotoAlbumAdapter extends BaseRecyclerViewAdapter<AlbumInfo> {
     }
 
 }
+

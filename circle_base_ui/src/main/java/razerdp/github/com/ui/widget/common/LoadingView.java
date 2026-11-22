@@ -1,4 +1,4 @@
-package razerdp.github.com.ui.widget.common;
+﻿package razerdp.github.com.ui.widget.common;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -6,14 +6,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
 /**
- * Created by 大灯泡 on 2016/8/10.
+ * Created by 澶х伅娉?on 2016/8/10.
  *
  * loading
  */
@@ -126,7 +126,7 @@ public class LoadingView extends View {
     }
 
     /**
-     * duration必须为180的倍数，否则会自动调整为180的倍数
+     * duration蹇呴』涓?80鐨勫€嶆暟锛屽惁鍒欎細鑷姩璋冩暣涓?80鐨勫€嶆暟
      */
     public void start(@Nullable Interpolator interpolator, long duration) {
         if (isAnimaed) return;
@@ -209,3 +209,4 @@ public class LoadingView extends View {
         stop();
     }
 }
+

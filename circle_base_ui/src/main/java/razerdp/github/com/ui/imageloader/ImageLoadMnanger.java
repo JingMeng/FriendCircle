@@ -1,11 +1,11 @@
-package razerdp.github.com.ui.imageloader;
+﻿package razerdp.github.com.ui.imageloader;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -20,9 +20,9 @@ import razerdp.github.com.lib.api.AppContext;
 
 
 /**
- * Created by 大灯泡 on 2016/11/1.
+ * Created by 澶х伅娉?on 2016/11/1.
  * <p>
- * 图片加载
+ * 鍥剧墖鍔犺浇
  */
 
 public enum ImageLoadMnanger {
@@ -112,3 +112,4 @@ public enum ImageLoadMnanger {
         }
     }
 }
+

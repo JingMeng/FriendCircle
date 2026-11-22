@@ -1,4 +1,4 @@
-package razerdp.github.com.ui.helper;
+﻿package razerdp.github.com.ui.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.content.FileProvider;
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 
@@ -15,9 +15,9 @@ import razerdp.github.com.lib.api.AppContext;
 
 
 /**
- * Created by 大灯泡 on 2017/6/15.
+ * Created by 澶х伅娉?on 2017/6/15.
  * <p>
- * 适配helper
+ * 閫傞厤helper
  */
 
 public class CompatHelper {
@@ -72,3 +72,4 @@ public class CompatHelper {
     }
 
 }
+

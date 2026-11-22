@@ -1,8 +1,8 @@
-package razerdp.friendcircle.activity;
+﻿package razerdp.friendcircle.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.razerdp.github.com.common.entity.CommentInfo;
 
@@ -14,7 +14,7 @@ import razerdp.github.com.lib.utils.GsonUtil;
 import razerdp.github.com.ui.widget.commentwidget.CommentContentsLayout;
 
 /**
- * Created by 大灯泡 on 2018/3/28.
+ * Created by 澶х伅娉?on 2018/3/28.
  */
 public class TestActivity extends BaseActivity {
     private CommentContentsLayout commentLayout;
@@ -40,3 +40,4 @@ public class TestActivity extends BaseActivity {
         commentLayout.addComments(commentInfos);
     }
 }
+

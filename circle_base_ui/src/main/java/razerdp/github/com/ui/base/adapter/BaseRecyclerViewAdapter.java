@@ -1,8 +1,8 @@
-package razerdp.github.com.ui.base.adapter;
+﻿package razerdp.github.com.ui.base.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +16,9 @@ import razerdp.github.com.lib.utils.ToolUtil;
 
 
 /**
- * Created by 大灯泡 on 2016/7/20.
+ * Created by 澶х伅娉?on 2016/7/20.
  * <p>
- * 抽象的adapter
+ * 鎶借薄鐨刟dapter
  */
 
 public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<BaseRecyclerViewHolder<T>> {
@@ -78,7 +78,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //这个获取位置的方法，防止添加删除导致位置不变
+                    //杩欎釜鑾峰彇浣嶇疆鐨勬柟娉曪紝闃叉娣诲姞鍒犻櫎瀵艰嚧浣嶇疆涓嶅彉
                     int layoutPosition = holder.getAdapterPosition();
                     onRecyclerViewItemClickListener.onItemClick(holder.itemView, layoutPosition, datas.get(layoutPosition));
                 }
@@ -150,7 +150,7 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
 
     public T findData(int pos) {
         if (pos < 0 || pos > datas.size()) {
-            Log.e(TAG, "这个position他喵咪的太强大了，我hold不住");
+            Log.e(TAG, "杩欎釜position浠栧柕鍜殑澶己澶т簡锛屾垜hold涓嶄綇");
             return null;
         }
         return datas.get(pos);
@@ -182,3 +182,4 @@ public abstract class BaseRecyclerViewAdapter<T> extends RecyclerView.Adapter<Ba
         this.onRecyclerViewLongItemClickListener = onRecyclerViewLongItemClickListener;
     }
 }
+

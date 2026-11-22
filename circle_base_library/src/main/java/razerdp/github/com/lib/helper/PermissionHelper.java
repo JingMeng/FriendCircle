@@ -1,4 +1,4 @@
-package razerdp.github.com.lib.helper;
+﻿package razerdp.github.com.lib.helper;
 
 import android.Manifest;
 import android.app.Activity;
@@ -9,13 +9,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 
 import java.lang.annotation.Retention;
@@ -31,8 +31,7 @@ import razerdp.github.com.lib.R;
 
 
 /**
- * 权限帮助类
- */
+ * 鏉冮檺甯姪绫? */
 
 public class PermissionHelper {
     private static final String TAG = "PermissionHelper";
@@ -86,8 +85,7 @@ public class PermissionHelper {
 
     public void requestPermission(@PermissionResultCode final int requestCode, OnPermissionGrantListener listener) {
         setOnPermissionGrantListener(listener);
-        //低于23的直接返回
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        //浣庝簬23鐨勭洿鎺ヨ繑鍥?        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             callPermissionGranted(requestCode);
             return;
         }
@@ -97,7 +95,7 @@ public class PermissionHelper {
         }
 
         if (requestCode < 0 || !PERMISSION_MAP.containsKey(requestCode)) {
-            Log.e(TAG, "非法rquestCode，请传入@PermissionResultCode里面的值");
+            Log.e(TAG, "闈炴硶rquestCode锛岃浼犲叆@PermissionResultCode閲岄潰鐨勫€?);
             callPermissionDenied(requestCode);
             return;
         }
@@ -108,7 +106,7 @@ public class PermissionHelper {
             checkSelfPermission = ContextCompat.checkSelfPermission(getContext(), requestPermission);
         } catch (RuntimeException e) {
             Log.e(TAG, e.getMessage());
-            openSettingActivity(getContext(), "需要手动授权以下权限");
+            openSettingActivity(getContext(), "闇€瑕佹墜鍔ㄦ巿鏉冧互涓嬫潈闄?);
             return;
         }
 
@@ -125,8 +123,7 @@ public class PermissionHelper {
 
     private void requestMultiResult(String[] permissions, int[] grantResults, OnPermissionGrantListener onPermissionGrantListener) {
         setOnPermissionGrantListener(onPermissionGrantListener);
-        //低于23的直接返回
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        //浣庝簬23鐨勭洿鎺ヨ繑鍥?        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             callPermissionGranted(CODE_MULTI_PERMISSION);
             return;
         }
@@ -147,13 +144,12 @@ public class PermissionHelper {
         if (notGranted.size() == 0) {
             callPermissionGranted(CODE_MULTI_PERMISSION);
         } else {
-            openSettingActivity(getContext(), "需要手动授权权限");
+            openSettingActivity(getContext(), "闇€瑕佹墜鍔ㄦ巿鏉冩潈闄?);
         }
     }
 
     /**
-     * 自行申请没有的权限
-     */
+     * 鑷鐢宠娌℃湁鐨勬潈闄?     */
     public void autoRequestPermissions(OnPermissionGrantListener listener) {
         setOnPermissionGrantListener(listener);
         if (getContext() == null) {
@@ -176,7 +172,7 @@ public class PermissionHelper {
                 builder.append(s);
                 builder.append('\n');
             }
-            shoMessageDialog(getContext(), "需要权限", "需要申请以下权限：" + builder.toString(), "确定", new DialogInterface.OnClickListener() {
+            shoMessageDialog(getContext(), "闇€瑕佹潈闄?, "闇€瑕佺敵璇蜂互涓嬫潈闄愶細" + builder.toString(), "纭畾", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     requestPermissionsInternal(shouldRationalePermissionsList.toArray(new String[shouldRationalePermissionsList.size()]),
@@ -202,7 +198,7 @@ public class PermissionHelper {
 
     private void shouldShowRationale(final Context activity, final int requestCode, final String requestPermission) {
         String[] permissionsHint = activity.getResources().getStringArray(R.array.permissions);
-        shoMessageDialog(activity, "申请授权失败", "Rationale: " + permissionsHint[requestCode], "确定", new DialogInterface.OnClickListener() {
+        shoMessageDialog(activity, "鐢宠鎺堟潈澶辫触", "Rationale: " + permissionsHint[requestCode], "纭畾", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 requestPermissionsInternal(new String[]{requestPermission}, requestCode);
@@ -232,7 +228,7 @@ public class PermissionHelper {
         }
 
         if (requestCode < 0 || !PERMISSION_MAP.containsKey(requestCode)) {
-            Log.e(TAG, "非法rquestCode，请传入@PermissionResultCode里面的值");
+            Log.e(TAG, "闈炴硶rquestCode锛岃浼犲叆@PermissionResultCode閲岄潰鐨勫€?);
             return;
         }
 
@@ -247,7 +243,7 @@ public class PermissionHelper {
 
     private static void openSettingActivity(final Context context, String message) {
 
-        shoMessageDialog(context, "授权被永久禁止", message, "手动授权", new DialogInterface.OnClickListener() {
+        shoMessageDialog(context, "鎺堟潈琚案涔呯姝?, message, "鎵嬪姩鎺堟潈", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent();
@@ -368,3 +364,4 @@ public class PermissionHelper {
     }
 
 }
+

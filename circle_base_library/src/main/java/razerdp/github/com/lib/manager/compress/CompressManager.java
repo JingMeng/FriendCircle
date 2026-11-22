@@ -1,8 +1,8 @@
-package razerdp.github.com.lib.manager.compress;
+﻿package razerdp.github.com.lib.manager.compress;
 
 import android.content.Context;
-import android.support.annotation.IntDef;
-import android.support.annotation.StringDef;
+import androidx.annotation.IntDef;
+import androidx.annotation.StringDef;
 
 import com.socks.library.KLog;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import razerdp.github.com.lib.utils.ToolUtil;
 
 /**
- * Created by 大灯泡 on 2018/1/8.
+ * Created by 澶х伅娉?on 2018/1/8.
  */
 public class CompressManager {
 
@@ -25,10 +25,8 @@ public class CompressManager {
 
     }
 
-    public static final int SIZE = 0x10;//质量压缩
-    public static final int SCALE = 0x11;//分辨率压缩
-    public static final int BOTH = 0x12;//上面两个。。。
-
+    public static final int SIZE = 0x10;//璐ㄩ噺鍘嬬缉
+    public static final int SCALE = 0x11;//鍒嗚鲸鐜囧帇缂?    public static final int BOTH = 0x12;//涓婇潰涓や釜銆傘€傘€?
 
     @Retention(RetentionPolicy.SOURCE)
     @StringDef({JPG, PNG})
@@ -79,13 +77,14 @@ public class CompressManager {
     public void start(OnCompressListener listener) {
         BaseCompressTaskHelper helper;
         if (getContext() == null) {
-            KLog.e("context为空");
+            KLog.e("context涓虹┖");
             return;
         }
         if (ToolUtil.isListEmpty(mOptions)) {
-            KLog.e("配置为空");
+            KLog.e("閰嶇疆涓虹┖");
             return;
         }
         new CompressTaskQueue(getContext(), mOptions, listener).start();
     }
 }
+

@@ -1,7 +1,7 @@
-package razerdp.friendcircle.ui.viewholder;
+﻿package razerdp.friendcircle.ui.viewholder;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -35,19 +35,19 @@ import razerdp.github.com.ui.widget.commentwidget.IComment;
 import razerdp.github.com.ui.widget.common.ClickShowMoreLayout;
 
 /**
- * Created by 大灯泡 on 2016/11/1.
+ * Created by 澶х伅娉?on 2016/11/1.
  * <p>
- * 朋友圈基本item
+ * 鏈嬪弸鍦堝熀鏈琲tem
  */
 public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<MomentsInfo> implements BaseMomentVH<MomentsInfo> {
 
 
-    //头部
+    //澶撮儴
     protected ImageView avatar;
     protected TextView nick;
     protected ClickShowMoreLayout userText;
 
-    //底部
+    //搴曢儴
     protected TextView createTime;
     protected TextView deleteMoments;
     protected ImageView commentImage;
@@ -57,8 +57,7 @@ public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<M
     protected View line;
     protected CommentContentsLayout commentLayout;
 
-    //内容区
-    protected LinearLayout contentLayout;
+    //鍐呭鍖?    protected LinearLayout contentLayout;
 
     private CommentPopup commentPopup;
     private DeleteCommentPopup deleteCommentPopup;
@@ -96,7 +95,7 @@ public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<M
         commentLayout.setOnCommentItemClickListener(onCommentItemClickListener);
         commentLayout.setOnCommentItemLongClickListener(onCommentItemLongClickListener);
         commentLayout.setOnCommentWidgetItemClickListener(onCommentWidgetItemClickListener);
-        // FIXME: 2018/1/3 暂时未开发完
+        // FIXME: 2018/1/3 鏆傛椂鏈紑鍙戝畬
 //        commentLayout.setMode(CommentContentsLayout.Mode.EXPANDABLE);
         //content
         contentLayout = (LinearLayout) findView(contentLayout, R.id.content);
@@ -123,20 +122,20 @@ public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<M
     @Override
     public void onBindData(MomentsInfo data, int position) {
         if (data == null) {
-            KLog.e("数据是空的！！！！");
+            KLog.e("鏁版嵁鏄┖鐨勶紒锛侊紒锛?);
             findView(userText, R.id.item_text_field);
-            userText.setText("这个动态的数据是空的。。。。OMG");
+            userText.setText("杩欎釜鍔ㄦ€佺殑鏁版嵁鏄┖鐨勩€傘€傘€傘€侽MG");
             return;
         }
         this.momentsInfo = data;
         this.itemPosition = position;
-        //通用数据绑定
+        //閫氱敤鏁版嵁缁戝畾
         onBindMutualDataToViews(data);
-        //点击事件
+        //鐐瑰嚮浜嬩欢
         menuButton.setOnClickListener(onMenuButtonClickListener);
         menuButton.setTag(R.id.momentinfo_data_tag_id, data);
         deleteMoments.setOnClickListener(onDeleteMomentClickListener);
-        //传递到子类
+        //浼犻€掑埌瀛愮被
         onBindDataToView(data, position, getViewType());
     }
 
@@ -163,11 +162,10 @@ public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<M
 
 
     /**
-     * 添加点赞
+     * 娣诲姞鐐硅禐
      *
      * @param likesList
-     * @return ture=显示点赞，false=不显示点赞
-     */
+     * @return ture=鏄剧ず鐐硅禐锛宖alse=涓嶆樉绀虹偣璧?     */
     private boolean addLikes(List<LikesInfo> likesList) {
         if (ToolUtil.isListEmpty(likesList)) {
             return false;
@@ -184,7 +182,7 @@ public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<M
         @Override
         public void onCommentItemClicked(@NonNull IComment comment, CharSequence text) {
             if (comment instanceof CommentInfo) {
-                UIHelper.ToastMessage("点击的用户 ： 【 " + text + " 】");
+                UIHelper.ToastMessage("鐐瑰嚮鐨勭敤鎴?锛?銆?" + text + " 銆?);
             }
         }
     };
@@ -271,3 +269,4 @@ public abstract class CircleBaseViewHolder extends BaseMultiRecyclerViewHolder<M
 
 
 }
+

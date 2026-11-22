@@ -5,6 +5,8 @@ if (isModule.toBoolean()) {
 }
 
 android {
+    namespace 'android {
+    '
     compileSdkVersion rootProject.ext.android.compileSdkVersion
 
     defaultConfig {
@@ -13,7 +15,7 @@ android {
         versionCode rootProject.ext.photoselect.versionCode
         versionName rootProject.ext.photoselect.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         if (isModule.toBoolean()) {
             buildConfigField 'boolean', 'isModule', 'true'
@@ -46,7 +48,7 @@ android {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-                //release模式下排除debug文件夹中的所有Java文件
+                //release????????ebug???????????ava???
                 java {
                     exclude 'debug/**'
                 }
@@ -60,4 +62,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies.arouter_compiler
 
 }
+
+
+
 

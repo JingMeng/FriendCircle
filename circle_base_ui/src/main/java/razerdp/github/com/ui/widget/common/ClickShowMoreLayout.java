@@ -1,9 +1,9 @@
-package razerdp.github.com.ui.widget.common;
+﻿package razerdp.github.com.ui.widget.common;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntDef;
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntDef;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.SparseIntArray;
@@ -22,8 +22,8 @@ import razerdp.github.com.baseuilib.R;
 import razerdp.github.com.ui.widget.commentwidget.ExTextView;
 
 /**
- * Created by 大灯泡 on 2016/2/19.
- * 点击展开更多
+ * Created by 澶х伅娉?on 2016/2/19.
+ * 鐐瑰嚮灞曞紑鏇村
  */
 public class ClickShowMoreLayout extends LinearLayout implements View.OnClickListener {
     private static final String TAG = "ClickShowMoreLayout";
@@ -67,7 +67,7 @@ public class ClickShowMoreLayout extends LinearLayout implements View.OnClickLis
         textSize = a.getDimensionPixelSize(R.styleable.ClickShowMoreLayout_text_size, 14);
         showLine = a.getInt(R.styleable.ClickShowMoreLayout_show_line, 8);
         clickText = a.getString(R.styleable.ClickShowMoreLayout_click_text);
-        if (TextUtils.isEmpty(clickText)) clickText = "全文";
+        if (TextUtils.isEmpty(clickText)) clickText = "鍏ㄦ枃";
         a.recycle();
 
         initView(context);
@@ -117,7 +117,7 @@ public class ClickShowMoreLayout extends LinearLayout implements View.OnClickLis
                 break;
             case OPEN:
                 mTextView.setMaxLines(Integer.MAX_VALUE);
-                mClickToShow.setText("收起");
+                mClickToShow.setText("鏀惰捣");
                 break;
         }
         TEXT_STATE.put(key, state);
@@ -149,8 +149,8 @@ public class ClickShowMoreLayout extends LinearLayout implements View.OnClickLis
 
     private int getStateKey(String str) {
         if (str == null) return -1;
-        //通过viewParent生成key，相当于该控件的string与viewParent绑定
-        //但是在列表中似乎因为复用问题会导致状态不准确
+        //閫氳繃viewParent鐢熸垚key锛岀浉褰撲簬璇ユ帶浠剁殑string涓巚iewParent缁戝畾
+        //浣嗘槸鍦ㄥ垪琛ㄤ腑浼间箮鍥犱负澶嶇敤闂浼氬鑷寸姸鎬佷笉鍑嗙‘
         ViewParent parent = getParent();
         int parentId = 0;
         if (parent != null) {
@@ -215,3 +215,4 @@ public class ClickShowMoreLayout extends LinearLayout implements View.OnClickLis
         int onStateKeyGenerated(int originKey);
     }
 }
+

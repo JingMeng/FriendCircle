@@ -1,11 +1,11 @@
-package razerdp.github.com.lib.helper;
+﻿package razerdp.github.com.lib.helper;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.text.TextUtils;
 
 import com.socks.library.KLog;
@@ -20,10 +20,9 @@ import razerdp.github.com.lib.base.BaseActivity;
 import razerdp.github.com.lib.utils.FileUtil;
 
 /**
- * Created by 大灯泡 on 2017/3/23.
+ * Created by 澶х伅娉?on 2017/3/23.
  * <p>
- * app文件helper，针对7.0，需要留意path与filepaths一致
- */
+ * app鏂囦欢helper锛岄拡瀵?.0锛岄渶瑕佺暀鎰弍ath涓巉ilepaths涓€鑷? */
 
 public class AppFileHelper {
     private static boolean OVERM = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
@@ -82,15 +81,15 @@ public class AppFileHelper {
 
     private static void initStroagePathInternal() {
         if (TextUtils.isEmpty(storagePath)) {
-            //M开始用的filePorider
+            //M寮€濮嬬敤鐨刦ilePorider
             if (!OVERM) {
                 storagePath = FileUtil.getStoragePath(AppContext.getAppContext(), false);
             }
             if (TextUtils.isEmpty(storagePath)) {
-                //没有路径就使用getExternalStorageDirectory
+                //娌℃湁璺緞灏变娇鐢╣etExternalStorageDirectory
                 storagePath = Environment.getExternalStorageDirectory().getAbsolutePath();
                 if (TextUtils.isEmpty(storagePath)) {
-                    //依然没法创建路径则使用私有的
+                    //渚濈劧娌℃硶鍒涘缓璺緞鍒欎娇鐢ㄧ鏈夌殑
                     storagePath = AppContext.getAppContext().getFilesDir().getAbsolutePath();
                 }
             }
@@ -179,3 +178,4 @@ public class AppFileHelper {
     }
 
 }
+

@@ -1,9 +1,9 @@
-package razerdp.github.com.ui.widget.imageview;
+﻿package razerdp.github.com.ui.widget.imageview;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +19,9 @@ import razerdp.github.com.lib.utils.ToolUtil;
 import razerdp.github.com.baseuilib.R;
 
 /**
- * Created by 大灯泡 on 2017/4/14.
+ * Created by 澶х伅娉?on 2017/4/14.
  * <p>
- * 发布动态的预览图片控件
+ * 鍙戝竷鍔ㄦ€佺殑棰勮鍥剧墖鎺т欢
  */
 
 public class PreviewImageView<T> extends FlowLayout implements ViewGroup.OnHierarchyChangeListener {
@@ -264,3 +264,4 @@ public class PreviewImageView<T> extends FlowLayout implements ViewGroup.OnHiera
     }
 
 }
+

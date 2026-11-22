@@ -1,6 +1,6 @@
-package razerdp.github.com.lib.utils;
+﻿package razerdp.github.com.lib.utils;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -18,9 +18,9 @@ import java.util.TimeZone;
 import razerdp.github.com.lib.R;
 
 /**
- * Created by 大灯泡 on 2016/11/1.
+ * Created by 澶х伅娉?on 2016/11/1.
  * <p>
- * 时间工具
+ * 鏃堕棿宸ュ叿
  */
 
 public class TimeUtil {
@@ -38,41 +38,36 @@ public class TimeUtil {
     public final static String YYYYMMDDHHMM = "yyyy-MM-dd hh:mm";
     public final static String YYYYMMLNDDHHMM = "yyyy-MM-dd\nhh:mm";
     public final static String YYYYMMDDHHMMSS = "yyyy-MM-dd hh:mm:ss";
-    public final static String MMDDHHMM_CHINESE = "MM月dd日_hh时mm分";
-    public final static String MMDDHHMM_CHINESE_EX = "MM月dd日_hh_mm";
+    public final static String MMDDHHMM_CHINESE = "MM鏈坉d鏃hh鏃秏m鍒?;
+    public final static String MMDDHHMM_CHINESE_EX = "MM鏈坉d鏃hh_mm";
     public final static String YYYYMMDD_SLASH = "yyyy/MM/dd";
     public final static String YYYYMM_SLASH = "yyyy/MM";
 
     private static SimpleDateFormat sdf = new SimpleDateFormat();
-    public static final int YEAR = 365 * 24 * 60 * 60;// 年
-    public static final int MONTH = 30 * 24 * 60 * 60;// 月
-    public static final int DAY = 24 * 60 * 60;// 天
-    public static final int HOUR = 60 * 60;// 小时
-    public static final int MINUTE = 60;// 分钟
+    public static final int YEAR = 365 * 24 * 60 * 60;// 骞?    public static final int MONTH = 30 * 24 * 60 * 60;// 鏈?    public static final int DAY = 24 * 60 * 60;// 澶?    public static final int HOUR = 60 * 60;// 灏忔椂
+    public static final int MINUTE = 60;// 鍒嗛挓
 
     public static String getTimeString(long timestamp) {
         long currentTime = System.currentTimeMillis();
-        long timeGap = (currentTime - timestamp) / 1000;// 与现在时间相差秒数
-        String timeStr = null;
+        long timeGap = (currentTime - timestamp) / 1000;// 涓庣幇鍦ㄦ椂闂寸浉宸鏁?        String timeStr = null;
         if (timeGap > YEAR) {
             timeStr = formatTimeFromResource(R.string.format_time_year, (int) (timeGap / YEAR));
         } else if (timeGap > MONTH) {
             timeStr = formatTimeFromResource(R.string.format_time_month, (int) (timeGap / MONTH));
 
-        } else if (timeGap > DAY) {// 1天以上
-            timeStr = formatTimeFromResource(R.string.format_time_day, (int) (timeGap / DAY));
-        } else if (timeGap > HOUR) {// 1小时-24小时
+        } else if (timeGap > DAY) {// 1澶╀互涓?            timeStr = formatTimeFromResource(R.string.format_time_day, (int) (timeGap / DAY));
+        } else if (timeGap > HOUR) {// 1灏忔椂-24灏忔椂
             timeStr = formatTimeFromResource(R.string.format_time_hour, (int) (timeGap / HOUR));
-        } else if (timeGap > MINUTE) {// 1分钟-59分钟
+        } else if (timeGap > MINUTE) {// 1鍒嗛挓-59鍒嗛挓
             timeStr = formatTimeFromResource(R.string.format_time_minute, (int) (timeGap / MINUTE));
-        } else {// 1秒钟-59秒钟
+        } else {// 1绉掗挓-59绉掗挓
             timeStr = StringUtil.getResourceString(R.string.format_time_sec);
         }
         return timeStr;
     }
 
     public static String getTimeStringFromBmob(String time) {
-        //格式:2016-10-28 18:48:23
+        //鏍煎紡:2016-10-28 18:48:23
         try {
             Date date = dataFormate.parse(time);
             return getTimeString(date.getTime());
@@ -91,7 +86,7 @@ public class TimeUtil {
     private static SimpleDateFormat yyyymmddFormate = new SimpleDateFormat(YYYYMMDD, Locale.getDefault());
 
     /**
-     * 获取未来 第 past 天的日期
+     * 鑾峰彇鏈潵 绗?past 澶╃殑鏃ユ湡
      *
      * @param past
      * @return
@@ -107,7 +102,7 @@ public class TimeUtil {
     }
 
     /**
-     * 获取未来 第 past 天的日期
+     * 鑾峰彇鏈潵 绗?past 澶╃殑鏃ユ湡
      *
      * @param past
      * @return
@@ -138,7 +133,7 @@ public class TimeUtil {
     }
 
     /**
-     * 获取未来 第 past 天的日期
+     * 鑾峰彇鏈潵 绗?past 澶╃殑鏃ユ湡
      *
      * @param date 20170412
      * @return 04-12
@@ -151,10 +146,9 @@ public class TimeUtil {
     }
 
     /**
-     * 时间戳转格式化日期
-     *
-     * @param timestamp 单位毫秒
-     * @param format    日期格式
+     * 鏃堕棿鎴宠浆鏍煎紡鍖栨棩鏈?     *
+     * @param timestamp 鍗曚綅姣
+     * @param format    鏃ユ湡鏍煎紡
      * @return
      */
     public static String longToTimeStr(long timestamp, @FormateType String format) {
@@ -162,10 +156,9 @@ public class TimeUtil {
     }
 
     /**
-     * 时间戳转格式化日期
-     *
-     * @param timestamp 单位毫秒
-     * @param format    日期格式
+     * 鏃堕棿鎴宠浆鏍煎紡鍖栨棩鏈?     *
+     * @param timestamp 鍗曚綅姣
+     * @param format    鏃ユ湡鏍煎紡
      * @return
      */
     private static String transferLongToDate(long timestamp, String format) {
@@ -185,9 +178,8 @@ public class TimeUtil {
     }
 
     /**
-     * 格式化日期转时间戳
-     *
-     * @param format 日期格式
+     * 鏍煎紡鍖栨棩鏈熻浆鏃堕棿鎴?     *
+     * @param format 鏃ユ湡鏍煎紡
      * @return
      */
     public static long strToTimestamp(String date, String format) {
@@ -202,15 +194,15 @@ public class TimeUtil {
     }
 
     /**
-     * 比较timeTwo是否比TimeOne晚超过distanceMinute分钟
+     * 姣旇緝timeTwo鏄惁姣擳imeOne鏅氳秴杩嘾istanceMinute鍒嗛挓
      *
-     * @param TimeOne        单位 unixtime
-     * @param timeTwo        单位 unixtime
-     * @param distanceMinute 单位分钟
+     * @param TimeOne        鍗曚綅 unixtime
+     * @param timeTwo        鍗曚綅 unixtime
+     * @param distanceMinute 鍗曚綅鍒嗛挓
      * @return
      */
     public static boolean isGreaterThan(long TimeOne, long timeTwo, int distanceMinute) {
-        long timeDifference = timeTwo - TimeOne;// 两者相距的秒数
+        long timeDifference = timeTwo - TimeOne;// 涓よ€呯浉璺濈殑绉掓暟
         long oneMinute = 60;
         if (timeDifference > distanceMinute * oneMinute) {
             return true;
@@ -308,25 +300,25 @@ public class TimeUtil {
             e.printStackTrace();
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-            week = "周日";
+            week = "鍛ㄦ棩";
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) {
-            week = "周一";
+            week = "鍛ㄤ竴";
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) {
-            week = "周二";
+            week = "鍛ㄤ簩";
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) {
-            week = "周三";
+            week = "鍛ㄤ笁";
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) {
-            week = "周四";
+            week = "鍛ㄥ洓";
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) {
-            week = "周五";
+            week = "鍛ㄤ簲";
         }
         if (c.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
-            week = "周六";
+            week = "鍛ㄥ叚";
         }
         return week;
     }
@@ -336,3 +328,4 @@ public class TimeUtil {
     }
 
 }
+

@@ -1,8 +1,8 @@
-package razerdp.github.com.adapter;
+﻿package razerdp.github.com.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +29,9 @@ import razerdp.github.com.photoselect.R;
 import static razerdp.github.com.photoselect.fragment.PhotoGridFragement.MAX_COUNT;
 
 /**
- * Created by 大灯泡 on 2017/3/24.
+ * Created by 澶х伅娉?on 2017/3/24.
  * <p>
- * 图片选择adapter
+ * 鍥剧墖閫夋嫨adapter
  */
 
 public class PhotoSelectAdapter extends BaseRecyclerViewAdapter<ImageInfo> {
@@ -77,9 +77,8 @@ public class PhotoSelectAdapter extends BaseRecyclerViewAdapter<ImageInfo> {
     }
 
     /**
-     * 这里不可以用list.remove(Object)，因为当进行过选择之后，内部的实例不一定是同一个对象了。
-     * <p>
-     * {@link razerdp.github.com.photoselect.fragment.PhotoGridFragement#updateSelectList(List)}以及{@link PhotoMultiBrowserActivity#finish()}
+     * 杩欓噷涓嶅彲浠ョ敤list.remove(Object)锛屽洜涓哄綋杩涜杩囬€夋嫨涔嬪悗锛屽唴閮ㄧ殑瀹炰緥涓嶄竴瀹氭槸鍚屼竴涓璞′簡銆?     * <p>
+     * {@link razerdp.github.com.photoselect.fragment.PhotoGridFragement#updateSelectList(List)}浠ュ強{@link PhotoMultiBrowserActivity#finish()}
      */
     private void onUnSelectPhoto(ImageInfo info) {
         if (info == null) return;
@@ -157,8 +156,7 @@ public class PhotoSelectAdapter extends BaseRecyclerViewAdapter<ImageInfo> {
         }
 
         /**
-         * 根据屏幕宽度设置iv的大小
-         */
+         * 鏍规嵁灞忓箷瀹藉害璁剧疆iv鐨勫ぇ灏?         */
         private void setCheckImageViewLayoutParams() {
             int itemDercorationSum = 5 * itemDecoration;
             int screenWidth = UIHelper.getScreenWidthPix(getContext());
@@ -269,3 +267,4 @@ public class PhotoSelectAdapter extends BaseRecyclerViewAdapter<ImageInfo> {
         void onSelectCountChange(int count);
     }
 }
+
